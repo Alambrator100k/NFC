@@ -1,0 +1,2778 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>نَفَس | كل نفس جديد.. حياة بلا دخان</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* جميع الأنماط كما هي - تم حذفها للاختصار ولكنها موجودة في الكود الكامل */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(145deg, #eaf5ec 0%, #d0e8d4 100%);
+            min-height: 100vh;
+            padding: 1rem 0.8rem 2rem;
+            color: #1a3a27;
+            transition: background 0.3s, color 0.3s;
+        }
+        body.dark-mode {
+            background: linear-gradient(145deg, #1a2a1f 0%, #0d1f12 100%);
+            color: #d4e8d4;
+        }
+        body.dark-mode .container {
+            background: rgba(20, 40, 25, 0.85);
+            border-color: rgba(255,255,255,0.1);
+        }
+        body.dark-mode .stats-grid { background: #1a3a27; }
+        body.dark-mode .stat-item .num { color: #8fcaa0; }
+        body.dark-mode .daily-message { background: #1a3a27; color: #d4e8d4; }
+        body.dark-mode .chart-section { background: #1a3a27; }
+        body.dark-mode .calendar-section { background: #1a3a27; }
+        body.dark-mode .progress-section { background: #1a3a27; }
+        body.dark-mode .card { background: #1a3a27; border-color: #2a5a3f; }
+        body.dark-mode .article-item { background: #1a3a27; border-color: #2a5a3f; }
+        body.dark-mode .add-experience { background: #1a3a27; border-color: #2b8c5e; }
+        body.dark-mode .analysis-note { background: #1a3a27; }
+        body.dark-mode .settings-box { background: #1a2a1f; }
+        body.dark-mode .settings-box .setting-item { background: #1a3a27; border-color: #2a5a3f; }
+        body.dark-mode .settings-box h3 { color: #8fcaa0; }
+        body.dark-mode .journey-box { background: #1a2a1f; }
+        body.dark-mode .journey-box .activity-item { background: #1a3a27; border-color: #2a5a3f; }
+        body.dark-mode .journey-box h3 { color: #8fcaa0; }
+        body.dark-mode .modal-box { background: #1a2a1f; }
+        body.dark-mode .modal-box h3 { color: #8fcaa0; }
+        body.dark-mode .onboarding-card { background: #1a2a1f; }
+        body.dark-mode .onboarding-card h2 { color: #8fcaa0; }
+        body.dark-mode .onboarding-card input { background: #1a3a27; border-color: #2a5a3f; color: #d4e8d4; }
+        body.dark-mode .brand h1 { color: #8fcaa0; }
+        body.dark-mode .brand .sub { background: rgba(43,140,94,0.2); color: #8fcaa0; }
+        body.dark-mode .dev-link { background: #0d1f12; border-color: #2b8c5e; }
+        body.dark-mode .settings-btn { border-color: #2b8c5e; color: #8fcaa0; }
+        body.dark-mode .settings-btn:hover { background: #2b8c5e; color: #1a2a1f; }
+        body.dark-mode .day-cell { background: #1a3a27; color: #d4e8d4; }
+        body.dark-mode .day-cell.empty { background: transparent; }
+        body.dark-mode .emergency-quote { background: #1a3a27; color: #d4e8d4; border-color: #2a5a3f; }
+        body.dark-mode .benefits-content { background: #1a3a27; color: #d4e8d4; border-color: #2a5a3f; }
+        body.dark-mode .benefits-content h4 { color: #8fcaa0; }
+        body.dark-mode .benefits-content li { border-bottom-color: #2a5a3f; }
+        body.dark-mode .plan-content { background: #1a3a27; color: #d4e8d4; border-color: #2a5a3f; }
+        body.dark-mode .plan-content .step { border-bottom-color: #2a5a3f; }
+        body.dark-mode .plan-content .step-icon { background: #2a5a3f; }
+        body.dark-mode .plan-content .step-icon i { color: #8fcaa0; }
+        body.dark-mode .article-modal-content { background: #1a3a27; color: #d4e8d4; border-color: #2a5a3f; }
+        body.dark-mode .article-modal-content h4 { color: #8fcaa0; }
+        body.dark-mode .article-modal-content li { border-bottom-color: #2a5a3f; }
+        body.dark-mode .story-modal-content { background: #1a3a27; color: #d4e8d4; border-color: #2a5a3f; }
+        body.dark-mode .story-modal-content h4 { color: #8fcaa0; }
+        body.dark-mode .story-modal-content .story-highlight { background: #2a5a3f; }
+        body.dark-mode .experience-modal-content { background: #1a3a27; color: #d4e8d4; border-color: #2a5a3f; }
+        body.dark-mode .experience-modal-content textarea { background: #1a3a27; color: #d4e8d4; border-color: #2a5a3f; }
+        body.dark-mode .experience-modal-content input { background: #1a3a27; color: #d4e8d4; border-color: #2a5a3f; }
+        body.dark-mode .content-modal-content { background: #1a3a27; color: #d4e8d4; border-color: #2a5a3f; }
+        body.dark-mode .content-modal-content h4 { color: #8fcaa0; }
+        body.dark-mode .content-modal-content .feature-card { background: #1a3a27; border-color: #2a5a3f; }
+        body.dark-mode .content-modal-content .section-card { background: #1a3a27; border-color: #2a5a3f; }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 48px 48px 28px 28px;
+            padding: 1.8rem 1.5rem 2rem;
+            box-shadow: 0 20px 40px rgba(0, 30, 10, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            position: relative;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .onboarding-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 40, 20, 0.7);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 1.2rem;
+        }
+        .onboarding-card {
+            background: white;
+            max-width: 480px;
+            width: 100%;
+            border-radius: 60px 20px 60px 20px;
+            padding: 2.2rem 1.8rem 2rem;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            animation: fadeUp 0.3s ease;
+            transition: background 0.3s;
+        }
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: scale(0.9) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .onboarding-card h2 { color: #0d3d24; font-size: 1.8rem; margin-bottom: 0.2rem; }
+        .onboarding-card .subhead { font-size: 0.9rem; opacity: 0.6; margin-bottom: 1.5rem; }
+        .onboarding-card .question { font-size: 1.3rem; font-weight: 700; color: #1a4f31; margin: 1rem 0 0.3rem; }
+        .onboarding-card input, .onboarding-card select {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border-radius: 60px;
+            border: 2px solid #b6d5be;
+            font-size: 1.1rem;
+            font-family: 'Tajawal', sans-serif;
+            background: #f5fcf7;
+            margin: 0.5rem 0 0.8rem;
+            transition: 0.2s;
+        }
+        .onboarding-card input:focus { outline: none; border-color: #1f7a4b; box-shadow: 0 0 0 4px rgba(31,122,75,0.15); }
+        .onboarding-card .btn-next {
+            background: linear-gradient(135deg, #1d6b40, #0f4629);
+            border: none;
+            color: white;
+            padding: 0.8rem 2.8rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 0.6rem;
+            font-family: 'Tajawal', sans-serif;
+            transition: 0.2s;
+            width: 100%;
+        }
+        .onboarding-card .btn-next:hover { transform: scale(1.01); background: linear-gradient(135deg, #248a4e, #135232); }
+        .onboarding-card .step-indicator { font-size: 0.8rem; opacity: 0.5; margin-top: 1rem; }
+        .onboarding-card .greeting { font-size: 1.8rem; font-weight: 800; color: #0d3d24; }
+        .onboarding-card .greeting i { color: #2b8c5e; }
+        .brand {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .brand h1 { font-size: 2rem; font-weight: 800; color: #0e4b2b; display: flex; align-items: center; gap: 8px; }
+        .brand h1 i { color: #2b8c5e; font-size: 1.8rem; }
+        .brand .sub { font-size: 0.8rem; color: #2a5a3f; background: rgba(43,140,94,0.15); padding: 0.2rem 1rem; border-radius: 40px; }
+        .dev-link {
+            background: #1a3f2b; color: white; padding: 0.3rem 1rem; border-radius: 50px; font-size: 0.75rem;
+            text-decoration: none; transition: 0.3s; display: inline-flex; align-items: center; gap: 5px; border: 1px solid #66a37e;
+        }
+        .dev-link:hover { background: #0f2f1e; transform: scale(1.02); }
+        .settings-btn {
+            background: transparent;
+            border: 2px solid #1f7a4b;
+            color: #1f7a4b;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: 'Tajawal', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .settings-btn:hover { background: #1f7a4b; color: white; }
+        .header-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+        .settings-modal {
+            background: rgba(0, 20, 5, 0.6);
+            backdrop-filter: blur(3px);
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1500;
+            padding: 1rem;
+        }
+        .settings-box {
+            background: white;
+            max-width: 420px;
+            width: 100%;
+            padding: 2rem 1.5rem;
+            border-radius: 60px 20px 60px 20px;
+            text-align: center;
+            animation: fadeUp 0.25s ease;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            transition: background 0.3s;
+        }
+        .settings-box h3 { color: #0d3d24; font-size: 1.5rem; margin-bottom: 0.3rem; }
+        .settings-box .sub { font-size: 0.85rem; opacity: 0.6; margin-bottom: 1.5rem; }
+        .settings-box .setting-item {
+            background: #f5fcf7;
+            padding: 0.8rem 1rem;
+            border-radius: 60px;
+            margin: 0.6rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #d4e8d4;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .settings-box .setting-item:hover { background: #e8f3ea; }
+        .settings-box .setting-item .icon { color: #1f7a4b; font-size: 1.2rem; margin-left: 10px; }
+        .settings-box .setting-item .label { font-weight: 600; flex: 1; text-align: right; }
+        .settings-box .setting-item .arrow { color: #1f7a4b; opacity: 0.5; }
+        .settings-box .close-settings {
+            background: #1f5f3b;
+            color: white;
+            border: none;
+            padding: 0.5rem 2rem;
+            border-radius: 60px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.9rem;
+        }
+        .settings-box .close-settings:hover { background: #135232; }
+        .toggle-switch {
+            position: relative;
+            width: 44px;
+            height: 24px;
+            background: #b4cfbb;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            flex-shrink: 0;
+        }
+        .toggle-switch.active { background: #2b8c5e; }
+        .toggle-switch .toggle-knob {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transition: 0.3s;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+        }
+        .toggle-switch.active .toggle-knob { right: 22px; }
+        body.dark-mode .toggle-switch { background: #2a5a3f; }
+        body.dark-mode .toggle-switch.active { background: #2b8c5e; }
+        .setting-item .toggle-wrap { display: flex; align-items: center; gap: 10px; }
+        .setting-item .toggle-label { font-size: 0.8rem; opacity: 0.6; }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            background: #e4f3e7;
+            padding: 0.8rem 0.5rem;
+            border-radius: 60px;
+            margin-bottom: 1.2rem;
+            transition: background 0.3s;
+        }
+        .stat-item { text-align: center; }
+        .stat-item .num { font-size: 1.4rem; font-weight: 800; color: #0b4122; line-height: 1.2; transition: color 0.3s; }
+        .stat-item .label { font-size: 0.55rem; opacity: 0.7; font-weight: 400; }
+        .stat-item i { color: #1f7a4b; margin-left: 3px; }
+        .journey-row {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+            margin: 0.5rem 0 0.8rem;
+            flex-wrap: wrap;
+        }
+        .cta-journey {
+            flex: 1;
+            background: linear-gradient(135deg, #1d6b40, #0f4629);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 0.8rem 0.8rem;
+            border-radius: 60px;
+            box-shadow: 0 6px 16px rgba(20,80,40,0.3);
+            transition: 0.2s;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 180px;
+        }
+        .cta-journey:hover { transform: scale(1.01); background: linear-gradient(135deg, #248a4e, #135232); }
+        .emergency-small {
+            background: #c72a2a;
+            border: none;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
+            box-shadow: 0 4px 0 #7a1a1a;
+            transition: 0.08s linear;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Tajawal', sans-serif;
+            white-space: nowrap;
+        }
+        .emergency-small:active { transform: translateY(4px); box-shadow: 0 0px 0 #7a1a1a; }
+        .emergency-small i { font-size: 1.2rem; }
+        .daily-message {
+            background: #f6fcf8;
+            border-radius: 60px;
+            padding: 0.5rem 1.2rem;
+            margin: 0.6rem 0 0.8rem;
+            text-align: center;
+            border-right: 6px solid #2b8c5e;
+            font-weight: 400;
+            font-size: 0.9rem;
+            transition: background 0.3s, color 0.3s;
+        }
+        .daily-message i { color: #2b8c5e; margin-left: 10px; }
+        .chart-section {
+            background: #d8ebdd;
+            border-radius: 30px;
+            padding: 1.2rem 1rem;
+            margin: 1rem 0 0.8rem;
+            transition: background 0.3s;
+        }
+        .chart-title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chart-container {
+            position: relative;
+            height: 200px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 20px;
+            padding: 0.5rem;
+            overflow: hidden;
+        }
+        .chart-canvas-wrap {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        #progressChart {
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+        }
+        .chart-legend {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 0.6rem;
+            font-size: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .chart-legend span { display: flex; align-items: center; gap: 6px; }
+        .legend-color { display: inline-block; width: 16px; height: 16px; border-radius: 4px; }
+        .legend-color.green { background: #2b8c5e; }
+        .legend-color.blue { background: #2b6c8c; }
+        .chart-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.4rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #0b4122;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+        }
+        .calendar-section {
+            background: #d8ebdd;
+            border-radius: 30px;
+            padding: 1rem 0.8rem;
+            margin: 0.8rem 0;
+            transition: background 0.3s;
+        }
+        .calendar-title { font-weight: 700; font-size: 1rem; margin-bottom: 0.6rem; display: flex; justify-content: space-between; }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.3rem;
+        }
+        .day-cell {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 16px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #1a3a27;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            transition: background 0.3s, color 0.3s;
+        }
+        .day-cell.today { border: 2px solid #1f7a4b; }
+        .day-cell.success { background: #2b8c5e; color: white; }
+        .day-cell.fail { background: #c72a2a; color: white; }
+        .day-cell.empty { background: transparent; box-shadow: none; }
+        .day-cell .day-num { font-size: 0.7rem; }
+        .day-cell i { font-size: 0.6rem; margin-right: 2px; }
+        .calendar-legend {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+            font-size: 0.7rem;
+        }
+        .calendar-legend span { display: flex; align-items: center; gap: 4px; }
+        .legend-dot { display: inline-block; width: 12px; height: 12px; border-radius: 4px; }
+        .legend-dot.success { background: #2b8c5e; }
+        .legend-dot.fail { background: #c72a2a; }
+        .legend-dot.empty { background: #ddd; }
+        .progress-section {
+            background: #d8ebdd;
+            border-radius: 40px;
+            padding: 1rem 1rem 0.8rem;
+            margin: 0.8rem 0;
+            transition: background 0.3s;
+        }
+        .progress-title { display: flex; justify-content: space-between; font-weight: 700; font-size: 0.95rem; }
+        .progress-bar-bg { width: 100%; height: 12px; background: #b4cfbb; border-radius: 40px; margin: 4px 0; }
+        .progress-fill { height: 12px; background: linear-gradient(90deg, #1f7a4b, #3db87a); border-radius: 40px; width: 68%; }
+        .analysis-note {
+            font-size: 0.8rem;
+            background: #f2fcf5;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            margin-top: 6px;
+            border-right: 6px solid #1f7a4b;
+            transition: background 0.3s;
+        }
+        .plan-section {
+            margin-top: 0.6rem;
+            background: #f2fcf5;
+            border-radius: 30px;
+            padding: 0.8rem 1rem;
+            border-right: 4px solid #2b8c5e;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .plan-section .plan-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #1a4f31;
+        }
+        .plan-section .plan-toggle i { color: #2b8c5e; transition: 0.3s; }
+        .plan-section .plan-toggle .arrow { transition: 0.3s; }
+        .plan-section .plan-toggle .arrow.open { transform: rotate(180deg); }
+        .plan-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+            padding: 0 0.2rem;
+        }
+        .plan-content.open {
+            max-height: 2500px;
+            padding: 0.6rem 0.2rem 0;
+        }
+        .plan-content .step {
+            display: flex;
+            gap: 12px;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #e8f3ea;
+            align-items: flex-start;
+        }
+        .plan-content .step:last-child { border-bottom: none; }
+        .plan-content .step-icon {
+            min-width: 32px;
+            height: 32px;
+            background: #e1f0e4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #1f7a4b;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .plan-content .step-text {
+            flex: 1;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+        .plan-content .step-text strong {
+            color: #1a4f31;
+            display: block;
+            font-size: 0.9rem;
+        }
+        .plan-content .step-text .sub-desc {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            padding-right: 0.5rem;
+            border-right: 2px solid #b4cfbb;
+            margin-top: 2px;
+        }
+        .plan-content .step-text .tag {
+            background: #d4e8d4;
+            padding: 0.05rem 0.6rem;
+            border-radius: 30px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #0f3a22;
+            display: inline-block;
+            margin-left: 6px;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.7rem;
+            margin: 1rem 0 0.8rem;
+        }
+        .card {
+            background: white;
+            padding: 0.8rem 0.3rem 0.6rem;
+            border-radius: 28px;
+            text-align: center;
+            border: 1px solid rgba(80,140,100,0.1);
+            transition: background 0.3s, border-color 0.3s, transform 0.2s;
+            cursor: pointer;
+        }
+        .card:hover { transform: scale(1.02); border-color: #2b8c5e; }
+        .card i { font-size: 1.8rem; color: #1d6b40; background: #e1f0e4; padding: 0.4rem; border-radius: 60px; width: 50px; margin-bottom: 2px; }
+        .card h4 { font-size: 0.85rem; color: #133d26; }
+        .card p { font-size: 0.6rem; opacity: 0.7; }
+        .content-modal {
+            background: rgba(0, 20, 5, 0.8);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1600;
+            padding: 1rem;
+        }
+        .content-modal-box {
+            background: white;
+            max-width: 700px;
+            width: 100%;
+            padding: 2rem 2rem 1.5rem;
+            border-radius: 40px 20px 40px 20px;
+            animation: fadeUp 0.4s ease;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            max-height: 90vh;
+            overflow-y: auto;
+            transition: background 0.3s;
+            text-align: right;
+        }
+        .content-modal-box h3 {
+            color: #0d3d24;
+            font-size: 1.6rem;
+            margin-bottom: 0.2rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .content-modal-box h3 i { color: #2b8c5e; }
+        .content-modal-box .sub {
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.6;
+            margin-bottom: 1.2rem;
+        }
+        .content-modal-content {
+            background: #f8fcf9;
+            border-radius: 30px;
+            padding: 1.2rem 1.4rem;
+            border: 1px solid #d4e8d4;
+            transition: background 0.3s, border-color 0.3s;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+        .content-modal-content .section-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #1a4f31;
+            margin: 1rem 0 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #d4e8d4;
+            padding-bottom: 0.3rem;
+        }
+        .content-modal-content .section-title i { color: #2b8c5e; font-size: 1.2rem; }
+        .content-modal-content .section-title:first-of-type { margin-top: 0; }
+        .content-modal-content .section-card {
+            background: white;
+            border-radius: 20px;
+            padding: 0.8rem 1rem;
+            margin: 0.5rem 0;
+            border: 1px solid #e8f3ea;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .content-modal-content .section-card .card-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #1a4f31;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .content-modal-content .section-card .card-title i { color: #2b8c5e; }
+        .content-modal-content .section-card p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            margin: 0.2rem 0 0;
+            padding-right: 1.8rem;
+            opacity: 0.9;
+        }
+        .content-modal-content .section-card ul {
+            list-style: none;
+            padding-right: 1.8rem;
+            margin: 0.2rem 0;
+        }
+        .content-modal-content .section-card ul li {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            padding: 0.2rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .content-modal-content .section-card ul li i {
+            color: #2b8c5e;
+            margin-top: 4px;
+            min-width: 16px;
+            font-size: 0.7rem;
+        }
+        .content-modal-content .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin: 0.3rem 0;
+        }
+        .content-modal-content .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 0.6rem 0.8rem;
+            border: 1px solid #e8f3ea;
+            text-align: center;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .content-modal-content .feature-card i {
+            font-size: 1.4rem;
+            color: #2b8c5e;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+        .content-modal-content .feature-card span {
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .content-modal-content .highlight-box {
+            background: #e8f3ea;
+            padding: 0.8rem 1rem;
+            border-radius: 16px;
+            border-right: 4px solid #2b8c5e;
+            margin: 0.5rem 0;
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+        .content-modal-box .close-content {
+            background: linear-gradient(135deg, #1d6b40, #0f4629);
+            border: none;
+            color: white;
+            padding: 0.7rem 2.5rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1rem;
+            width: 100%;
+            font-family: 'Tajawal', sans-serif;
+            transition: 0.2s;
+        }
+        .content-modal-box .close-content:hover { transform: scale(1.01); background: linear-gradient(135deg, #248a4e, #135232); }
+        .article-modal {
+            background: rgba(0, 20, 5, 0.75);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 1rem;
+        }
+        .article-modal-box {
+            background: white;
+            max-width: 600px;
+            width: 100%;
+            padding: 2rem 1.8rem;
+            border-radius: 40px 20px 40px 20px;
+            animation: fadeUp 0.4s ease;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            max-height: 90vh;
+            overflow-y: auto;
+            transition: background 0.3s;
+            text-align: right;
+        }
+        .article-modal-box h3 {
+            color: #0d3d24;
+            font-size: 1.4rem;
+            margin-bottom: 0.3rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .article-modal-box h3 i { color: #2b8c5e; }
+        .article-modal-box .sub {
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.6;
+            margin-bottom: 1rem;
+        }
+        .article-modal-content {
+            background: #f8fcf9;
+            border-radius: 30px;
+            padding: 1.2rem 1.4rem;
+            border: 1px solid #d4e8d4;
+            transition: background 0.3s, border-color 0.3s;
+            max-height: 55vh;
+            overflow-y: auto;
+        }
+        .article-modal-content h4 {
+            color: #1a4f31;
+            font-size: 1rem;
+            margin: 0.8rem 0 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .article-modal-content h4 i { color: #2b8c5e; }
+        .article-modal-content ul {
+            list-style: none;
+            padding-right: 1.2rem;
+            margin: 0.3rem 0 0.6rem;
+        }
+        .article-modal-content ul li {
+            padding: 0.3rem 0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            border-bottom: 1px solid #e8f3ea;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .article-modal-content ul li:last-child { border-bottom: none; }
+        .article-modal-content ul li i {
+            color: #2b8c5e;
+            margin-top: 4px;
+            min-width: 18px;
+            font-size: 0.8rem;
+        }
+        .article-modal-content .time-line {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin: 0.5rem 0;
+        }
+        .article-modal-content .time-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0.4rem 0.8rem;
+            background: #e8f3ea;
+            border-radius: 30px;
+            font-size: 0.85rem;
+        }
+        .article-modal-content .time-item .time {
+            font-weight: 800;
+            color: #1a4f31;
+            min-width: 70px;
+        }
+        .article-modal-box .close-article {
+            background: linear-gradient(135deg, #1d6b40, #0f4629);
+            border: none;
+            color: white;
+            padding: 0.7rem 2.5rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1.2rem;
+            width: 100%;
+            font-family: 'Tajawal', sans-serif;
+            transition: 0.2s;
+        }
+        .article-modal-box .close-article:hover { transform: scale(1.01); background: linear-gradient(135deg, #248a4e, #135232); }
+        .story-modal {
+            background: rgba(0, 20, 5, 0.75);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 1rem;
+        }
+        .story-modal-box {
+            background: white;
+            max-width: 600px;
+            width: 100%;
+            padding: 2rem 1.8rem;
+            border-radius: 40px 20px 40px 20px;
+            animation: fadeUp 0.4s ease;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            max-height: 90vh;
+            overflow-y: auto;
+            transition: background 0.3s;
+            text-align: right;
+        }
+        .story-modal-box h3 {
+            color: #0d3d24;
+            font-size: 1.4rem;
+            margin-bottom: 0.3rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .story-modal-box h3 i { color: #f5a623; }
+        .story-modal-box .sub {
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.6;
+            margin-bottom: 1rem;
+        }
+        .story-modal-content {
+            background: #f8fcf9;
+            border-radius: 30px;
+            padding: 1.2rem 1.4rem;
+            border: 1px solid #d4e8d4;
+            transition: background 0.3s, border-color 0.3s;
+            max-height: 55vh;
+            overflow-y: auto;
+        }
+        .story-modal-content .story-highlight {
+            background: #e8f3ea;
+            padding: 0.8rem 1rem;
+            border-radius: 20px;
+            border-right: 4px solid #f5a623;
+            margin: 0.5rem 0;
+            font-style: italic;
+        }
+        .story-modal-content p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin: 0.5rem 0;
+        }
+        .story-modal-content .story-step {
+            display: flex;
+            gap: 10px;
+            padding: 0.4rem 0;
+            align-items: flex-start;
+        }
+        .story-modal-content .story-step .num {
+            min-width: 28px;
+            height: 28px;
+            background: #2b8c5e;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .story-modal-content .story-step .text { flex: 1; font-size: 0.9rem; line-height: 1.6; }
+        .story-modal-content .story-step .text strong { color: #1a4f31; }
+        .story-modal-box .close-story {
+            background: linear-gradient(135deg, #1d6b40, #0f4629);
+            border: none;
+            color: white;
+            padding: 0.7rem 2.5rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1.2rem;
+            width: 100%;
+            font-family: 'Tajawal', sans-serif;
+            transition: 0.2s;
+        }
+        .story-modal-box .close-story:hover { transform: scale(1.01); background: linear-gradient(135deg, #248a4e, #135232); }
+        .experience-modal {
+            background: rgba(0, 20, 5, 0.75);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 1rem;
+        }
+        .experience-modal-box {
+            background: white;
+            max-width: 550px;
+            width: 100%;
+            padding: 2rem 1.8rem;
+            border-radius: 40px 20px 40px 20px;
+            animation: fadeUp 0.4s ease;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            transition: background 0.3s;
+            text-align: center;
+        }
+        .experience-modal-box h3 {
+            color: #0d3d24;
+            font-size: 1.4rem;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .experience-modal-box h3 i { color: #f5a623; }
+        .experience-modal-box .sub {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            margin-bottom: 1rem;
+        }
+        .experience-modal-content {
+            background: #f8fcf9;
+            border-radius: 30px;
+            padding: 1rem 1.2rem;
+            border: 1px solid #d4e8d4;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .experience-modal-content label {
+            display: block;
+            text-align: right;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+            color: #1a3a27;
+        }
+        .experience-modal-content label i { color: #2b8c5e; margin-left: 6px; }
+        .experience-modal-content input {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border: 2px solid #b4cfbb;
+            border-radius: 20px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.9rem;
+            background: white;
+            transition: 0.2s;
+            margin-bottom: 0.8rem;
+        }
+        .experience-modal-content input:focus {
+            outline: none;
+            border-color: #1f7a4b;
+            box-shadow: 0 0 0 3px rgba(31,122,75,0.1);
+        }
+        .experience-modal-content textarea {
+            width: 100%;
+            border: 2px solid #b4cfbb;
+            border-radius: 20px;
+            padding: 0.7rem 1rem;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.9rem;
+            background: white;
+            transition: 0.2s;
+            min-height: 120px;
+            resize: vertical;
+        }
+        .experience-modal-content textarea:focus {
+            outline: none;
+            border-color: #1f7a4b;
+            box-shadow: 0 0 0 3px rgba(31,122,75,0.1);
+        }
+        .experience-modal-content .char-count {
+            text-align: left;
+            font-size: 0.7rem;
+            opacity: 0.5;
+            margin-top: 0.2rem;
+        }
+        .experience-modal-box .btn-send-experience {
+            background: linear-gradient(135deg, #1d6b40, #0f4629);
+            border: none;
+            color: white;
+            padding: 0.7rem 2rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1rem;
+            width: 100%;
+            font-family: 'Tajawal', sans-serif;
+            transition: 0.2s;
+        }
+        .experience-modal-box .btn-send-experience:hover { transform: scale(1.01); background: linear-gradient(135deg, #248a4e, #135232); }
+        .experience-modal-box .btn-send-experience:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .experience-modal-box .close-experience {
+            background: transparent;
+            border: none;
+            color: #1a3a27;
+            font-size: 0.85rem;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            font-family: 'Tajawal', sans-serif;
+            opacity: 0.5;
+        }
+        .experience-modal-box .close-experience:hover { opacity: 1; }
+        .journey-modal {
+            background: rgba(0, 20, 5, 0.6);
+            backdrop-filter: blur(3px);
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1800;
+            padding: 1rem;
+        }
+        .journey-box {
+            background: white;
+            max-width: 480px;
+            width: 100%;
+            padding: 2rem 1.5rem;
+            border-radius: 60px 20px 60px 20px;
+            text-align: center;
+            animation: fadeUp 0.25s ease;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            max-height: 90vh;
+            overflow-y: auto;
+            transition: background 0.3s;
+        }
+        .journey-box h3 { color: #0d3d24; font-size: 1.4rem; margin-bottom: 0.3rem; }
+        .journey-box .sub { font-size: 0.85rem; opacity: 0.6; margin-bottom: 1rem; }
+        .journey-box .activity-item {
+            background: #f5fcf7;
+            padding: 0.8rem 1rem;
+            border-radius: 30px;
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid #d4e8d4;
+            text-align: right;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .journey-box .activity-item .icon { font-size: 1.5rem; min-width: 40px; color: #1f7a4b; }
+        .journey-box .activity-item .content { flex: 1; }
+        .journey-box .activity-item .content .title { font-weight: 700; font-size: 0.95rem; }
+        .journey-box .activity-item .content .desc { font-size: 0.8rem; opacity: 0.7; }
+        .journey-box .activity-item .status {
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+            border: 2px solid #b4cfbb;
+            background: white;
+            transition: 0.2s;
+        }
+        .journey-box .activity-item .status.done {
+            background: #2b8c5e;
+            color: white;
+            border-color: #2b8c5e;
+        }
+        .journey-box .activity-item .status.done:hover { opacity: 0.8; }
+        .journey-box .activity-item .status:not(.done):hover { background: #e8f3ea; }
+        .journey-box .btn-submit-journey {
+            background: linear-gradient(135deg, #1d6b40, #0f4629);
+            border: none;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1rem;
+            width: 100%;
+            font-family: 'Tajawal', sans-serif;
+            transition: 0.2s;
+        }
+        .journey-box .btn-submit-journey:hover { transform: scale(1.01); background: linear-gradient(135deg, #248a4e, #135232); }
+        .journey-box .btn-submit-journey:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .journey-box .close-journey {
+            background: transparent;
+            border: none;
+            color: #1a3a27;
+            font-size: 0.85rem;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            font-family: 'Tajawal', sans-serif;
+            opacity: 0.5;
+        }
+        .journey-box .close-journey:hover { opacity: 1; }
+        .emergency-modal {
+            background: rgba(0, 20, 5, 0.7);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            padding: 1rem;
+        }
+        .modal-box {
+            background: white;
+            max-width: 450px;
+            width: 100%;
+            padding: 2rem 1.5rem;
+            border-radius: 60px 20px 60px 20px;
+            text-align: center;
+            animation: fadeUp 0.3s ease;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            transition: background 0.3s;
+            max-height: 95vh;
+            overflow-y: auto;
+        }
+        .modal-box h3 { 
+            color: #0d3d24; 
+            margin-bottom: 0.4rem; 
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .modal-box h3 i { color: #c72a2a; }
+        .modal-box .emergency-quote {
+            background: #fef6f0;
+            border-right: 4px solid #c72a2a;
+            padding: 1rem 1.2rem;
+            border-radius: 20px;
+            margin: 0.8rem 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a3a27;
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s, border-color 0.3s;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-box .emergency-quote i {
+            color: #c72a2a;
+            margin-left: 10px;
+            font-size: 1.4rem;
+        }
+        .modal-box .breath-video {
+            background: #b8dac4;
+            padding: 0.8rem;
+            border-radius: 80px;
+            margin: 0.8rem 0;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .modal-box .breath-video:hover { background: #a8caa4; transform: scale(1.01); }
+        .modal-box .breath-timer {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1a4f31;
+            margin: 0.3rem 0;
+            direction: ltr;
+        }
+        .modal-box .analysis-section {
+            margin: 0.8rem 0;
+            text-align: right;
+        }
+        .modal-box .analysis-section label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 0.3rem;
+            color: #1a3a27;
+        }
+        .modal-box .analysis-section label i { color: #1f7a4b; margin-left: 6px; }
+        .modal-box textarea {
+            width: 100%;
+            border: 2px solid #9ebe9e;
+            border-radius: 30px;
+            padding: 0.6rem 1rem;
+            font-family: 'Tajawal', sans-serif;
+            margin: 0.2rem 0;
+            resize: vertical;
+            font-size: 0.9rem;
+            background: #f9fcf9;
+            transition: 0.2s;
+            min-height: 60px;
+        }
+        .modal-box textarea:focus {
+            outline: none;
+            border-color: #1f7a4b;
+            box-shadow: 0 0 0 3px rgba(31,122,75,0.1);
+        }
+        .modal-box .modal-actions {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 0.8rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .modal-box .close-modal {
+            background: #1f5f3b;
+            color: white;
+            border: none;
+            padding: 0.5rem 2rem;
+            border-radius: 60px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            flex: 1;
+            min-width: 120px;
+        }
+        .modal-box .close-modal:hover { background: #135232; }
+        .modal-box .skip-modal {
+            background: transparent;
+            color: #1a3a27;
+            border: 2px solid #b4cfbb;
+            padding: 0.5rem 1.5rem;
+            border-radius: 60px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            flex: 1;
+            min-width: 100px;
+        }
+        .modal-box .skip-modal:hover { background: #e8f3ea; }
+        .benefits-modal {
+            background: rgba(0, 20, 5, 0.75);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 1rem;
+        }
+        .benefits-box {
+            background: white;
+            max-width: 600px;
+            width: 100%;
+            padding: 2rem 1.8rem;
+            border-radius: 40px 20px 40px 20px;
+            animation: fadeUp 0.4s ease;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            max-height: 90vh;
+            overflow-y: auto;
+            transition: background 0.3s;
+            text-align: right;
+        }
+        .benefits-box h3 {
+            color: #0d3d24;
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .benefits-box h3 i { color: #f5a623; }
+        .benefits-box .sub {
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 1.2rem;
+        }
+        .benefits-content {
+            background: #f8fcf9;
+            border-radius: 30px;
+            padding: 1.2rem 1.4rem;
+            border: 1px solid #d4e8d4;
+            transition: background 0.3s, border-color 0.3s;
+            max-height: 55vh;
+            overflow-y: auto;
+        }
+        .benefits-content h4 {
+            color: #1a4f31;
+            font-size: 1rem;
+            margin: 0.8rem 0 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .benefits-content h4 i { color: #2b8c5e; font-size: 1.1rem; }
+        .benefits-content ul {
+            list-style: none;
+            padding-right: 1.2rem;
+            margin: 0.3rem 0 0.6rem;
+        }
+        .benefits-content ul li {
+            padding: 0.3rem 0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            border-bottom: 1px solid #e8f3ea;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .benefits-content ul li:last-child { border-bottom: none; }
+        .benefits-content ul li i {
+            color: #2b8c5e;
+            margin-top: 4px;
+            min-width: 18px;
+            font-size: 0.8rem;
+        }
+        .benefits-content .highlight {
+            background: #e8f3ea;
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+            font-weight: 700;
+            color: #1a4f31;
+        }
+        .benefits-box .close-benefits {
+            background: linear-gradient(135deg, #1d6b40, #0f4629);
+            border: none;
+            color: white;
+            padding: 0.7rem 2.5rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1.2rem;
+            width: 100%;
+            font-family: 'Tajawal', sans-serif;
+            transition: 0.2s;
+        }
+        .benefits-box .close-benefits:hover { transform: scale(1.01); background: linear-gradient(135deg, #248a4e, #135232); }
+        .article-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.6rem;
+            margin: 0.5rem 0;
+        }
+        .article-item {
+            background: white;
+            border-radius: 24px;
+            padding: 0.7rem 0.4rem;
+            border: 1px solid #cbdecb;
+            transition: background 0.3s, border-color 0.3s;
+            cursor: pointer;
+        }
+        .article-item:hover { border-color: #2b8c5e; }
+        .article-item .tag { font-size: 0.5rem; background: #d4e8d4; border-radius: 30px; padding: 0.1rem 0.6rem; display: inline-block; font-weight: 700; color: #0f3a22; }
+        .article-item h5 { margin: 2px 0 0; font-size: 0.8rem; }
+        .article-item p { font-size: 0.6rem; opacity: 0.8; }
+        .add-experience {
+            background: #e8f3ea;
+            border-radius: 60px;
+            padding: 0.4rem 1rem;
+            text-align: center;
+            margin-top: 0.8rem;
+            font-weight: 500;
+            border: 1px dashed #1f7a4b;
+            font-size: 0.85rem;
+            transition: background 0.3s, border-color 0.3s;
+            cursor: pointer;
+        }
+        .add-experience:hover { background: #d4e8d4; border-color: #2b8c5e; }
+        .save-badge { font-size: 0.55rem; color: #307a4b; margin: 2px 0 -4px 4px; text-align: left; }
+        .save-badge i { margin-left: 4px; }
+        .footer-note { margin-top: 1.5rem; text-align: center; font-size: 0.65rem; opacity: 0.4; }
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.8s ease-in-out infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        @media (max-width: 650px) {
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 0.3rem; }
+            .cards { grid-template-columns: 1fr 1fr; }
+            .article-grid { grid-template-columns: 1fr 1fr; }
+            .brand h1 { font-size: 1.6rem; }
+            .journey-row { flex-direction: column; align-items: stretch; }
+            .emergency-small { justify-content: center; padding: 0.5rem; }
+            .cta-journey { font-size: 1rem; padding: 0.7rem; }
+            .calendar-grid { gap: 0.2rem; }
+            .day-cell { font-size: 0.6rem; border-radius: 12px; }
+            .chart-container { height: 150px; }
+            .journey-box { padding: 1.5rem 1rem; }
+            .modal-box { padding: 1.5rem 1rem; }
+            .benefits-box { padding: 1.5rem 1rem; }
+            .benefits-content { padding: 1rem; }
+            .article-modal-box { padding: 1.5rem 1rem; }
+            .story-modal-box { padding: 1.5rem 1rem; }
+            .experience-modal-box { padding: 1.5rem 1rem; }
+            .content-modal-box { padding: 1.5rem 1rem; }
+            .plan-content .step { flex-direction: column; gap: 4px; }
+            .plan-content .step-icon { margin-top: 0; }
+            .content-modal-content .feature-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 450px) {
+            .cards { grid-template-columns: 1fr; }
+            .article-grid { grid-template-columns: 1fr; }
+            .stats-grid .num { font-size: 1.1rem; }
+            .modal-box .modal-actions { flex-direction: column; }
+            .benefits-content ul li { font-size: 0.8rem; }
+            .article-modal-content ul li { font-size: 0.8rem; }
+            .story-modal-content p { font-size: 0.85rem; }
+            .content-modal-content .section-card p { font-size: 0.8rem; }
+            .content-modal-content .section-card ul li { font-size: 0.8rem; }
+        }
+        .dev-top { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+        .quote-appear {
+            animation: quoteFade 0.5s ease;
+        }
+        @keyframes quoteFade {
+            0% { opacity: 0; transform: scale(0.95) translateY(10px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .breathing-active {
+            animation: breathPulse 1.5s ease-in-out infinite;
+        }
+        @keyframes breathPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+        .plan-content::-webkit-scrollbar,
+        .benefits-content::-webkit-scrollbar,
+        .article-modal-content::-webkit-scrollbar,
+        .story-modal-content::-webkit-scrollbar,
+        .experience-modal-content::-webkit-scrollbar,
+        .content-modal-content::-webkit-scrollbar,
+        .modal-box::-webkit-scrollbar,
+        .journey-box::-webkit-scrollbar {
+            width: 4px;
+        }
+        .plan-content::-webkit-scrollbar-track,
+        .benefits-content::-webkit-scrollbar-track,
+        .article-modal-content::-webkit-scrollbar-track,
+        .story-modal-content::-webkit-scrollbar-track,
+        .experience-modal-content::-webkit-scrollbar-track,
+        .content-modal-content::-webkit-scrollbar-track,
+        .modal-box::-webkit-scrollbar-track,
+        .journey-box::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .plan-content::-webkit-scrollbar-thumb,
+        .benefits-content::-webkit-scrollbar-thumb,
+        .article-modal-content::-webkit-scrollbar-thumb,
+        .story-modal-content::-webkit-scrollbar-thumb,
+        .experience-modal-content::-webkit-scrollbar-thumb,
+        .content-modal-content::-webkit-scrollbar-thumb,
+        .modal-box::-webkit-scrollbar-thumb,
+        .journey-box::-webkit-scrollbar-thumb {
+            background: #b4cfbb;
+            border-radius: 10px;
+        }
+        body.dark-mode .plan-content::-webkit-scrollbar-thumb,
+        body.dark-mode .benefits-content::-webkit-scrollbar-thumb,
+        body.dark-mode .article-modal-content::-webkit-scrollbar-thumb,
+        body.dark-mode .story-modal-content::-webkit-scrollbar-thumb,
+        body.dark-mode .experience-modal-content::-webkit-scrollbar-thumb,
+        body.dark-mode .content-modal-content::-webkit-scrollbar-thumb {
+            background: #2a5a3f;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ONBOARDING OVERLAY -->
+<div class="onboarding-overlay" id="onboardingOverlay">
+    <div class="onboarding-card" id="onboardingCard">
+        <h2><i class="fas fa-leaf" style="color:#2b8c5e;"></i> نَفَس</h2>
+        <div class="subhead">كل نفس جديد.. حياة بلا دخان</div>
+        <div id="onboardingContent"></div>
+    </div>
+</div>
+
+<!-- SETTINGS MODAL -->
+<div class="settings-modal" id="settingsModal">
+    <div class="settings-box">
+        <h3><i class="fas fa-cog" style="color:#1f7a4b;"></i> الإعدادات</h3>
+        <div class="sub">إدارة بياناتك وتفضيلاتك</div>
+        <div class="setting-item" id="contentAppBtn">
+            <span class="icon"><i class="fas fa-info-circle"></i></span>
+            <span class="label">محتوى التطبيق</span>
+            <span class="arrow"><i class="fas fa-chevron-left"></i></span>
+        </div>
+        <div class="setting-item" id="darkModeToggle">
+            <span class="icon"><i class="fas fa-moon"></i></span>
+            <span class="label">الوضع الليلي</span>
+            <div class="toggle-wrap">
+                <span class="toggle-label" id="darkModeLabel">إيقاف</span>
+                <div class="toggle-switch" id="darkModeSwitch">
+                    <div class="toggle-knob"></div>
+                </div>
+            </div>
+        </div>
+        <div class="setting-item" id="resetJourneyBtn">
+            <span class="icon"><i class="fas fa-undo-alt"></i></span>
+            <span class="label">إعادة بدء الرحلة</span>
+            <span class="arrow"><i class="fas fa-chevron-left"></i></span>
+        </div>
+        <div class="setting-item" id="changeInfoBtn">
+            <span class="icon"><i class="fas fa-user-edit"></i></span>
+            <span class="label">تغيير المعلومات</span>
+            <span class="arrow"><i class="fas fa-chevron-left"></i></span>
+        </div>
+        <div class="setting-item" style="opacity:0.5;cursor:default;">
+            <span class="icon"><i class="fas fa-database"></i></span>
+            <span class="label" id="dataInfoLabel">البيانات محفوظة محلياً</span>
+        </div>
+        <button class="close-settings" id="closeSettings">إغلاق</button>
+    </div>
+</div>
+
+<!-- CONTENT MODAL -->
+<div class="content-modal" id="contentModal">
+    <div class="content-modal-box">
+        <h3><i class="fas fa-info-circle" style="color:#2b8c5e;"></i> محتوى التطبيق</h3>
+        <div class="sub">تعرف على كل ما يقدمه لك تطبيق نَفَس لمساعدتك في رحلة الإقلاع عن التدخين</div>
+        <div class="content-modal-content">
+            <div class="section-title"><i class="fas fa-star"></i> نبذة عن التطبيق</div>
+            <div class="section-card">
+                <p><strong>نَفَس</strong> هو تطبيق متكامل مصمم خصيصاً لمساعدتك في رحلة الإقلاع عن التدخين. يجمع التطبيق بين التكنولوجيا الحديثة والطب السلوكي لتقديم تجربة فريدة تدعمك في كل خطوة على الطريق نحو حياة صحية خالية من التدخين.</p>
+                <div class="highlight-box" style="margin-top:0.5rem;">
+                    <i class="fas fa-quote-right" style="color:#2b8c5e;"></i>
+                    <strong>شعارنا:</strong> "كل نفس جديد.. حياة بلا دخان"
+                </div>
+            </div>
+            <div class="section-title"><i class="fas fa-gem"></i> مميزات التطبيق</div>
+            <div class="feature-grid">
+                <div class="feature-card"><i class="fas fa-brain"></i><span>ذكاء اصطناعي</span></div>
+                <div class="feature-card"><i class="fas fa-chart-line"></i><span>تتبع التقدم</span></div>
+                <div class="feature-card"><i class="fas fa-heart"></i><span>دعم نفسي</span></div>
+                <div class="feature-card"><i class="fas fa-calendar-check"></i><span>تقويم يومي</span></div>
+                <div class="feature-card"><i class="fas fa-lungs"></i><span>تمارين تنفس</span></div>
+                <div class="feature-card"><i class="fas fa-shield-alt"></i><span>خطط مخصصة</span></div>
+            </div>
+            <div class="section-title"><i class="fas fa-road"></i> طريقة استخدام التطبيق</div>
+            <div class="section-card">
+                <div class="card-title"><i class="fas fa-user-plus"></i> 1. التسجيل والبدء</div>
+                <p>عند فتح التطبيق لأول مرة، ستُطلب منك الإجابة على 3 أسئلة أساسية: اسمك، سعر علبة السجائر، وعدد السجائر التي تستهلكها يومياً. هذه البيانات تساعد التطبيق في تخصيص رحلتك وحساب التوفير والتحسن الصحي.</p>
+            </div>
+            <div class="section-card">
+                <div class="card-title"><i class="fas fa-road"></i> 2. رحلة اليوم</div>
+                <p>اضغط على زر <strong>"رحلة اليوم"</strong> لإتمام أنشطتك اليومية التي تشمل:</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> تقليل عدد السجائر المستهدفة (ينخفض تلقائياً كل يومين)</li>
+                    <li><i class="fas fa-check-circle"></i> جلسة تنفس عميق لمدة 3 دقائق</li>
+                    <li><i class="fas fa-check-circle"></i> استبدال السجائر بالعلكة أو التسالي الصحية</li>
+                </ul>
+                <p style="margin-top:0.3rem;">بعد إكمال جميع الأنشطة، يتم تسجيل اليوم كنجاح في التقويم.</p>
+            </div>
+            <div class="section-card">
+                <div class="card-title"><i class="fas fa-exclamation-triangle"></i> 3. زر الطوارئ</div>
+                <p>عند الشعور برغبة ملحة في التدخين، اضغط على زر <strong>"طوارئ"</strong>. ستظهر لك:</p>
+                <ul>
+                    <li><i class="fas fa-quote-right"></i> رسالة تحفيزية عشوائية</li>
+                    <li><i class="fas fa-play-circle"></i> تمرين تنفس بطيء لمدة 30 ثانية</li>
+                    <li><i class="fas fa-brain"></i> حقل لتحليل سبب الرغبة (يُحفظ لمساعدتك لاحقاً)</li>
+                </ul>
+                <p style="margin-top:0.3rem;">يمكنك اختيار "تم، استمر" لحفظ التحليل، أو "تخطي" لعرض جميع فوائد الإقلاع.</p>
+            </div>
+            <div class="section-card">
+                <div class="card-title"><i class="fas fa-newspaper"></i> 4. المحتوى التفاعلي</div>
+                <p>يحتوي التطبيق على ثلاثة أقسام تفاعلية:</p>
+                <ul>
+                    <li><i class="fas fa-newspaper"></i> <strong>مقال الأسبوع:</strong> يشرح بالتفصيل كيف يتعافى جسمك بعد الإقلاع</li>
+                    <li><i class="fas fa-user-graduate"></i> <strong>قصة نجاح:</strong> قصص ملهمة لأشخاص أقلعوا عن التدخين</li>
+                    <li><i class="fas fa-lungs"></i> <strong>تمرين تنفس:</strong> ينقلك مباشرة إلى جلسة التنفس الفورية</li>
+                </ul>
+            </div>
+            <div class="section-card">
+                <div class="card-title"><i class="fas fa-pen"></i> 5. مشاركة التجربة</div>
+                <p>يمكنك مشاركة قصتك مع المجتمع عبر زر <strong>"أضف تجربتك"</strong>. سيتم إرسال تجربتك إلى منصة التواصل لدعم الآخرين.</p>
+            </div>
+            <div class="section-title"><i class="fas fa-th-large"></i> الأقسام الرئيسية</div>
+            <div class="section-card">
+                <div class="card-title"><i class="fas fa-chart-simple"></i> لوحة الإحصائيات</div>
+                <p>تعرض في أعلى الصفحة 4 مؤشرات رئيسية: عدد أيام الإقلاع، المال الموفر، عدد النبضات المنقذة، وعدد السجائر التي تجنبتها.</p>
+            </div>
+            <div class="section-card">
+                <div class="card-title"><i class="fas fa-chart-line"></i> الرسم البياني للتقدم</div>
+                <p>يوضح تقدمك نحو الإقلاع النهائي خلال 100 يوم، مع نسبة تزيد 1% كل يوم. كما يعرض نسبة التزامك الفعلية بناءً على أيام النجاح والفشل.</p>
+            </div>
+            <div class="section-card">
+                <div class="card-title"><i class="fas fa-calendar-alt"></i> تقويم الرحلة</div>
+                <p>تقويم شهري يوضح أيام التزامك (علامة خضراء ✓) وأيام الفشل (علامة حمراء ✗)، مما يعطيك نظرة شاملة على تقدمك.</p>
+            </div>
+            <div class="section-card">
+                <div class="card-title"><i class="fas fa-lungs"></i> تحسن الأكسجين</div>
+                <p>يعرض نسبة تحسن الأكسجين في دمك، مع نصائح يومية وخطة إقلاع منظمة مكونة من 5 خطوات:</p>
+                <ul>
+                    <li><i class="fas fa-brain"></i> الاستعداد النفسي والتخطيط</li>
+                    <li><i class="fas fa-hand-paper"></i> التعامل مع الرغبة الملحة (استراتيجية الـ 4Ds)</li>
+                    <li><i class="fas fa-exchange-alt"></i> تغيير العادات والروابط اليومية</li>
+                    <li><i class="fas fa-running"></i> تفريغ الطاقة في الرياضة</li>
+                    <li><i class="fas fa-user-md"></i> الدعم والمساعدة الطبية</li>
+                </ul>
+            </div>
+            <div class="section-title"><i class="fas fa-heart"></i> فوائد التطبيق</div>
+            <div class="section-card">
+                <ul>
+                    <li><i class="fas fa-check"></i> <strong>تحفيز يومي:</strong> رسائل تحفيزية ونصائح يومية تبقيك على المسار الصحيح</li>
+                    <li><i class="fas fa-check"></i> <strong>متابعة دقيقة:</strong> تتبع جميع جوانب رحلتك بشكل تفصيلي</li>
+                    <li><i class="fas fa-check"></i> <strong>خصوصية كاملة:</strong> جميع بياناتك تُحفظ محلياً على جهازك فقط</li>
+                    <li><i class="fas fa-check"></i> <strong>دعم فوري:</strong> زر الطوارئ يوفر لك دعماً نفسياً فورياً في لحظات الضعف</li>
+                    <li><i class="fas fa-check"></i> <strong>مجتمع داعم:</strong> إمكانية مشاركة تجربتك وإلهام الآخرين</li>
+                    <li><i class="fas fa-check"></i> <strong>خطة مدروسة:</strong> خطة إقلاع علمية منظمة تعتمد على تقليل تدريجي للسجائر</li>
+                </ul>
+            </div>
+            <div class="highlight-box" style="border-right-color:#f5a623;background:#fef9f0;">
+                <i class="fas fa-star" style="color:#f5a623;"></i>
+                <strong>تذكر دائماً:</strong> الإقلاع عن التدخين رحلة مستمرة، وكل يوم تمر فيه بدون سيجارة هو انتصار حقيقي. نحن هنا لدعمك في كل خطوة على هذا الطريق. ابدأ اليوم، وجسمك سيشكرك سريعاً!
+            </div>
+        </div>
+        <button class="close-content" id="closeContent">✅ فهمت، شكراً</button>
+    </div>
+</div>
+
+<!-- JOURNEY MODAL -->
+<div class="journey-modal" id="journeyModal">
+    <div class="journey-box">
+        <h3><i class="fas fa-road" style="color:#1f7a4b;"></i> رحلة اليوم</h3>
+        <div class="sub">أكمل الأنشطة التالية لإتمام رحلتك اليومية</div>
+        <div id="journeyActivities"></div>
+        <button class="btn-submit-journey" id="submitJourneyBtn">✅ أكملت رحلة اليوم</button>
+        <button class="close-journey" id="closeJourneyBtn"><i class="fas fa-times"></i> إغلاق</button>
+    </div>
+</div>
+
+<!-- EXPERIENCE MODAL -->
+<div class="experience-modal" id="experienceModal">
+    <div class="experience-modal-box">
+        <h3><i class="fas fa-pen" style="color:#f5a623;"></i> شارك تجربتك</h3>
+        <div class="sub">قصتك قد تكون مصدر إلهام للآخرين. شاركها معنا!</div>
+        <div class="experience-modal-content">
+            <label><i class="fas fa-user"></i> اسمك</label>
+            <input type="text" id="experienceName" placeholder="اكتب اسمك...">
+            <label><i class="fas fa-comment"></i> تجربتك مع الإقلاع عن التدخين</label>
+            <textarea id="experienceText" rows="4" placeholder="اكتب قصتك هنا... كيف كانت رحلتك؟ ما هي التحديات التي واجهتها؟ كيف تغلبت عليها؟"></textarea>
+            <div class="char-count"><span id="charCount">0</span> حرف</div>
+        </div>
+        <button class="btn-send-experience" id="sendExperienceBtn"><i class="fas fa-paper-plane"></i> إرسال التجربة</button>
+        <button class="close-experience" id="closeExperienceBtn"><i class="fas fa-times"></i> إلغاء</button>
+    </div>
+</div>
+
+<!-- ARTICLE MODAL -->
+<div class="article-modal" id="articleModal">
+    <div class="article-modal-box">
+        <h3><i class="fas fa-newspaper" style="color:#2b8c5e;"></i> كيف يتعافى جسمك خلال 20 دقيقة</h3>
+        <div class="sub">رحلة التعافي المذهلة تبدأ فوراً بعد آخر سيجارة</div>
+        <div class="article-modal-content">
+            <h4><i class="fas fa-clock"></i> الجدول الزمني للتعافي</h4>
+            <div class="time-line">
+                <div class="time-item"><span class="time">🕐 20 دقيقة</span> يعود ضغط الدم ومعدل ضربات القلب إلى المستوى الطبيعي. تبدأ درجة حرارة اليدين والقدمين بالارتفاع.</div>
+                <div class="time-item"><span class="time">🕐 8 ساعات</span> تنخفض مستويات أول أكسيد الكربون في الدم، وترتفع مستويات الأكسجين.</div>
+                <div class="time-item"><span class="time">🕐 24 ساعة</span> ينخفض خطر الإصابة بالنوبة القلبية بشكل ملحوظ.</div>
+                <div class="time-item"><span class="time">🕐 48 ساعة</span> تبدأ حاسة الشم والتذوق بالتحسن. تتجدد النهايات العصبية.</div>
+                <div class="time-item"><span class="time">🕐 72 ساعة</span> تصبح الشعب الهوائية أكثر استرخاءً، ويصبح التنفس أسهل.</div>
+                <div class="time-item"><span class="time">🕐 2-12 أسبوع</span> تتحسن الدورة الدموية بشكل ملحوظ. تزداد قدرة الرئتين على العمل.</div>
+                <div class="time-item"><span class="time">🕐 1-9 أشهر</span> ينخفض السعال وضيق التنفس. تتحسن وظائف الرئتين بنسبة تصل إلى 10%.</div>
+                <div class="time-item"><span class="time">🕐 1 سنة</span> ينخفض خطر الإصابة بأمراض القلب التاجية إلى النصف مقارنة بالمدخن.</div>
+                <div class="time-item"><span class="time">🕐 5 سنوات</span> ينخفض خطر الإصابة بالسكتة الدماغية إلى مستوى غير المدخن.</div>
+                <div class="time-item"><span class="time">🕐 10 سنوات</span> ينخفض خطر الإصابة بسرطان الرئة إلى النصف. ينخفض خطر الإصابة بسرطانات أخرى.</div>
+            </div>
+            <h4><i class="fas fa-heart"></i> كيف يحدث ذلك؟</h4>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> <strong>تحسين تدفق الدم:</strong> تتوسع الأوعية الدموية، مما يحسن تدفق الأكسجين والمواد المغذية إلى جميع أعضاء الجسم.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>تنظيف الرئتين:</strong> تبدأ الأهداب (الشعيرات الدقيقة في الرئتين) بالعمل مرة أخرى لتنظيف المخاط والسموم.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>تقليل الالتهاب:</strong> يتراجع الالتهاب المزمن في الجسم الذي يسببه التدخين.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>تجديد الخلايا:</strong> تبدأ خلايا الجسم في التجدد وإصلاح الأضرار الناجمة عن السموم.</li>
+            </ul>
+            <div style="background:#e8f3ea;padding:0.8rem;border-radius:20px;margin-top:0.5rem;text-align:center;border-right:4px solid #2b8c5e;">
+                <i class="fas fa-gem" style="color:#2b8c5e;"></i>
+                <strong>تذكر: </strong>كل دقيقة تمر بدون تدخين هي استثمار في صحتك ومستقبلك. جسمك يبدأ بالتعافي فوراً!
+            </div>
+        </div>
+        <button class="close-article" id="closeArticle">✅ فهمت، شكراً</button>
+    </div>
+</div>
+
+<!-- STORY MODAL -->
+<div class="story-modal" id="storyModal">
+    <div class="story-modal-box">
+        <h3><i class="fas fa-user-graduate" style="color:#f5a623;"></i> قصة نجاح أحمد</h3>
+        <div class="sub">أحمد أقلع عن التدخين بعد 15 عاماً من الإدمان</div>
+        <div class="story-modal-content">
+            <div class="story-highlight">
+                <i class="fas fa-quote-right" style="color:#f5a623;"></i>
+                "كنت أدخن علبة ونصف يومياً لمدة 15 سنة. حاولت الإقلاع 6 مرات وفشلت. لكن المحاولة السابعة كانت مختلفة."
+            </div>
+            <p><strong>قصة أحمد:</strong> بدأت رحلة أحمد مع التدخين في سن 18 عاماً. كان يعتقد أن التدخين يساعده على التركيز وتخفيف التوتر. لكن مع مرور السنوات، أصبحت السيجارة رفيقته الدائمة، وسيطرت على حياته بالكامل.</p>
+            <div class="story-step">
+                <div class="num">1</div>
+                <div class="text"><strong>لحظة القرار:</strong> عندما سمع أحمد أطباءه يقولون إن صحته في خطر شديد، وأن رئتيه بدأت تظهر عليها علامات التلف المبكر. قال: "الخوف على عائلتي كان الدافع الأقوى".</div>
+            </div>
+            <div class="story-step">
+                <div class="num">2</div>
+                <div class="text"><strong>التخطيط:</strong> حدد أحمد موعداً للإقلاع، وأخبر جميع أفراد عائلته وأصدقائه. كتب قائمة طويلة بأسباب الإقلاع وعلقها في غرفة نومه.</div>
+            </div>
+            <div class="story-step">
+                <div class="num">3</div>
+                <div class="text"><strong>التحدي الأول:</strong> "الأيام الثلاثة الأولى كانت جحيماً. كنت عصبيًا، متوتراً، وأفكر في السيجارة كل ثانية. لكنني استخدمت استراتيجية الـ 4Ds: التأجيل، التنفس العميق، شرب الماء، وتشتيت الانتباه."</div>
+            </div>
+            <div class="story-step">
+                <div class="num">4</div>
+                <div class="text"><strong>الرياضة كمنقذ:</strong> بدأ أحمد بممارسة المشي ثم الجري. يقول: "الرياضة غيرت كل شيء. كانت تفرز هرمونات السعادة وتجعلني أشعر بالانتصار على نفسي."</div>
+            </div>
+            <div class="story-step">
+                <div class="num">5</div>
+                <div class="text"><strong>الدعم:</strong> انضم أحمد إلى مجموعات دعم عبر الإنترنت، ووجد تشجيعاً كبيراً من أشخاص مروا بنفس التجربة. كما استشار طبيبه للحصول على بدائل النيكوتين.</div>
+            </div>
+            <div class="story-step">
+                <div class="num">6</div>
+                <div class="text"><strong>النتيجة:</strong> بعد 6 أشهر، أصبح أحمد قادراً على الجري لمسافة 5 كيلومترات دون توقف. يقول: "شعرت أنني ولدت من جديد. صحتي تحسنت، مالي توفّر، ونفسيتي أصبحت أفضل بكثير."</div>
+            </div>
+            <div style="background:#e8f3ea;padding:0.8rem;border-radius:20px;margin-top:0.5rem;text-align:center;border-right:4px solid #f5a623;">
+                <i class="fas fa-star" style="color:#f5a623;"></i>
+                <strong>رسالة أحمد: </strong>"الإقلاع ليس مستحيلاً. الفشل في المحاولة لا يعني النهاية. أنا دليل على أن الإرادة والعزيمة والدعم يمكنها أن تصنع المعجزات. ابدأ اليوم، ولا تستسلم أبداً!"
+            </div>
+        </div>
+        <button class="close-story" id="closeStory">✅ فهمت، شكراً</button>
+    </div>
+</div>
+
+<!-- BENEFITS MODAL -->
+<div class="benefits-modal" id="benefitsModal">
+    <div class="benefits-box">
+        <h3><i class="fas fa-star" style="color:#f5a623;"></i> لماذا تستمر؟</h3>
+        <div class="sub">اتخاذك لخطوة التفكير في الأسباب التي تدفعك للإقلاع عن التدخين هو بداية ذكية جداً. الدوافع القوية هي الوقود الذي سيحميك في الأيام التي تشعر فيها بضعف العزيمة.</div>
+        <div class="benefits-content">
+            <h4><i class="fas fa-heartbeat"></i> 1. مكاسب صحية فورية ومستقبلية</h4>
+            <ul>
+                <li><i class="fas fa-clock"></i> <strong>بعد 20 دقيقة فقط:</strong> يعود ضغط دمك ونبضات قلبك إلى المستويات الطبيعية.</li>
+                <li><i class="fas fa-lungs"></i> <strong>بعد 12 ساعة:</strong> تنخفض نسبة غاز أول أكسيد الكربون السام في دمك، وترتفع نسبة الأكسجين لتستعيد خلايا جسمك حيويتها.</li>
+                <li><i class="fas fa-walking"></i> <strong>بعد أسابيع قليلة:</strong> تتحسن وظائف الرئتين بشكل ملحوظ، ويقل السعال وضيق التنفس المزعج.</li>
+                <li><i class="fas fa-shield-alt"></i> <strong>على المدى الطويل:</strong> ينخفض خطر الإصابة بالنوبات القلبية، السكتات الدماغية، وأمراض السرطان (خاصة سرطان الرئة) بنسب تصل إلى 50% وأكثر مقارنة بالمدخنين.</li>
+            </ul>
+            <h4><i class="fas fa-bolt"></i> 2. طاقة بدنية ولياقة في قمة مستواها</h4>
+            <ul>
+                <li><i class="fas fa-heart"></i> <strong>كفاءة أعلى للقلب والرئتين:</strong> بدون النيكوتين والقطران، تزداد قدرة دمك على حمل الأكسجين وتوزيعه على العضلات، مما يمنحك طاقة وقوة تحمل مضاعفة أثناء التمارين أو المجهود اليومي.</li>
+                <li><i class="fas fa-dumbbell"></i> <strong>استشفاء عضلي أسرع:</strong> التدخين يضيق الأوعية الدموية ويقلل تدفق الغذاء للأنسجة؛ عند الإقلاع، ستتحسن عملية بناء العضلات واستشفائها بعد التعب بشكل أسرع بكثير.</li>
+            </ul>
+            <h4><i class="fas fa-smile"></i> 3. استعادة الحواس والمظهر الجذاب</h4>
+            <ul>
+                <li><i class="fas fa-utensils"></i> <strong>حاستا التذوق والشم:</strong> ستتفاجأ بنكهة الطعام الحقيقية وروائح الأشياء من حولك بعد أن كانت باهتة بسبب الدخان.</li>
+                <li><i class="fas fa-wind"></i> <strong>رائحة وثقة دائمين:</strong> ستتخلص نهائياً من رائحة التبغ العالقة في أنفاسك، ثيابك، وشعرك.</li>
+                <li><i class="fas fa-tooth"></i> <strong>بشرة وأسنان أنقى:</strong> ستستعيد بشرتك نضارتها وتتخلص من الشحوب، وتتوقف عملية تصبغ أسنانك باللون الأصفر وتحمي لثتك من الالتهابات.</li>
+            </ul>
+            <h4><i class="fas fa-hand-fist"></i> 4. الحرية والاستقلال النفسي</h4>
+            <ul>
+                <li><i class="fas fa-unlock"></i> <strong>التخلص من العبودية:</strong> التدخين يجعلك رهيناً لسيجارة؛ تفكر متى تدخن؟ وأين؟ وتشعر بالتوتر إذا نفدت السجائر. الإقلاع يعيد لك التحكم الكامل في مزاجك ويومك دون الاعتماد على مادة كيميائية تفرض شروطها عليك.</li>
+            </ul>
+            <h4><i class="fas fa-coins"></i> 5. مكاسب مالية ضخمة</h4>
+            <ul>
+                <li><i class="fas fa-money-bill-wave"></i> <strong>توفير حقيقي:</strong> لو قمت بحساب ما تنفقه على السجائر شهرياً وسنوياً، ستجد مبالغ ضخمة تذهب حرفياً "مع الدخان". هذا المال يمكنك استثماره في تطوير نفسك، أو في عادات وهوايات مفيدة تمنحك متعة حقيقية ومستدامة.</li>
+                <li><i class="fas fa-gem"></i> <span class="highlight">كل سيجارة ترفض تدخينها هي استثمار مباشر في قوتك، صحتك، ومستقبلك.</span></li>
+            </ul>
+        </div>
+        <button class="close-benefits" id="closeBenefits">✅ فهمت، سأستمر</button>
+    </div>
+</div>
+
+<!-- EMERGENCY MODAL -->
+<div class="emergency-modal" id="emergencyModal">
+    <div class="modal-box">
+        <h3><i class="fas fa-exclamation-triangle" style="color:#c72a2a;"></i> لحظة ضعف.. أنت أقوى!</h3>
+        <div class="emergency-quote" id="emergencyQuote">
+            <i class="fas fa-quote-right"></i>
+            <span id="quoteText">"لا تنسى لما بدأت"</span>
+        </div>
+        <div class="breath-video" id="breathBtn">
+            <i class="fas fa-play-circle"></i> 
+            <span>تمرين التنفس البطيء (30 ثانية)</span>
+        </div>
+        <div class="breath-timer" id="breathTimer" style="display:none;">⏱️ 00:30</div>
+        <div class="analysis-section">
+            <label><i class="fas fa-brain"></i> لماذا تشعر بالرغبة الآن؟ (تحليل نفسي)</label>
+            <textarea id="emergencyReason" rows="2" placeholder="اكتب سبب رغبتك في التدخين الآن..."></textarea>
+        </div>
+        <div class="modal-actions">
+            <button class="close-modal" id="closeEmergency">✅ تم، استمر</button>
+            <button class="skip-modal" id="skipEmergency">⏭️ تخطي</button>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN APP -->
+<div class="container" id="appContainer">
+    <div class="brand">
+        <h1><i class="fas fa-leaf"></i> نَفَس</h1>
+        <div class="header-actions">
+            <span class="sub" id="userGreeting">مرحباً</span>
+            <button class="settings-btn" id="settingsBtn"><i class="fas fa-cog"></i> إعدادات</button>
+            <a href="https://alambrator100k.github.io/as/" target="_blank" class="dev-link"><i class="fas fa-code"></i> المطور</a>
+        </div>
+    </div>
+
+    <div class="stats-grid" id="statsGrid">
+        <div class="stat-item"><span class="num" id="daysCount">0</span><div class="label"><i class="fas fa-calendar-day"></i> أيام</div></div>
+        <div class="stat-item"><span class="num" id="moneySaved">0</span><div class="label"><i class="fas fa-coins"></i> موفر (ج.م)</div></div>
+        <div class="stat-item"><span class="num" id="heartbeats">0</span><div class="label"><i class="fas fa-heartbeat"></i> نبضات</div></div>
+        <div class="stat-item"><span class="num" id="cigarettesAvoided">0</span><div class="label"><i class="fas fa-ban"></i> سجائر تجنبتها</div></div>
+    </div>
+
+    <div class="journey-row">
+        <button class="cta-journey" id="journeyBtn"><i class="fas fa-road"></i> رحلة اليوم</button>
+        <button class="emergency-small" id="emergencyBtn"><i class="fas fa-exclamation-triangle"></i> طوارئ</button>
+    </div>
+
+    <div class="daily-message" id="dailyMsg"><i class="fas fa-star"></i> اليوم: تنفس عميق 3 مرات، أنت أقوى من الرغبة!</div>
+
+    <div class="chart-section" id="chartSection">
+        <div class="chart-title">
+            <span><i class="fas fa-chart-line" style="color:#1f7a4b;"></i> تقدم رحلتك نحو الإقلاع</span>
+            <span id="progressPercentLabel">0%</span>
+        </div>
+        <div class="chart-container">
+            <div class="chart-canvas-wrap">
+                <canvas id="progressChart"></canvas>
+            </div>
+        </div>
+        <div class="chart-legend">
+            <span><span class="legend-color green"></span> نسبة التزامك</span>
+            <span><span class="legend-color blue"></span> الإقلاع النهائي (100%)</span>
+        </div>
+        <div class="chart-stats">
+            <span>✅ أيام الالتزام: <span id="successDays">0</span></span>
+            <span>❌ أيام الفشل: <span id="failDays">0</span></span>
+            <span>🎯 نسبة الإقلاع: <span id="quitProgress">0%</span></span>
+        </div>
+    </div>
+
+    <div class="calendar-section" id="calendarSection">
+        <div class="calendar-title"><span>📅 تقويم الرحلة</span> <span id="monthYear"></span></div>
+        <div class="calendar-grid" id="calendarGrid"></div>
+        <div class="calendar-legend">
+            <span><span class="legend-dot success"></span> التزمت</span>
+            <span><span class="legend-dot fail"></span> لم ألتزم</span>
+            <span><span class="legend-dot empty"></span> قادم</span>
+        </div>
+    </div>
+
+    <div class="progress-section" id="progressSection">
+        <div class="progress-title"><span>📈 تحسن الأكسجين</span> <span id="oxygenPercent">68%</span></div>
+        <div class="progress-bar-bg"><div class="progress-fill" id="oxygenFill" style="width:68%"></div></div>
+        <div class="analysis-note" id="weeklyTip">💡 نصائح الأسبوع: أنت في مرحلة حساسة، ركز على مضغ العلكة.</div>
+        
+        <div class="plan-section" id="planSection">
+            <div class="plan-toggle" id="planToggle">
+                <span><i class="fas fa-list-ul"></i> خطة الإقلاع عن التدخين</span>
+                <span class="arrow" id="planArrow"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="plan-content" id="planContent">
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-brain"></i></div>
+                    <div class="step-text">
+                        <strong>1. الاستعداد النفسي والتخطيط</strong>
+                        <div class="sub-desc"><span class="tag">خطوة أساسية</span><strong>حدد يوم الاستقالة (D-Day):</strong> اختر تاريخاً محدداً في القريب العاجل ليكون أول يوم لك بدون تدخين، واعتمده كبداية لعهد جديد.</div>
+                        <div class="sub-desc"><strong>اكتب أسبابك:</strong> ضع قائمة واضحة بالدوافع التي تجعلك ترغب في الإقلاع (صحتك، توفير المال، عائلتك). اقرأ هذه القائمة كلما شعرت بضعف.</div>
+                        <div class="sub-desc"><strong>تخلص من المثيرات:</strong> قم برمي جميع السجائر، الولاعات، والمنافض من بيتك، سيارتك، ومكان عملك حتى لا تضع نفسك في مواجهة إغراء مباشر.</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-hand-paper"></i></div>
+                    <div class="step-text">
+                        <strong>2. التعامل مع الرغبة الملحة (استراتيجية الـ 4Ds)</strong>
+                        <div class="sub-desc"><span class="tag">طوارئ</span> عندما تشعر برغبة شديدة في تدخين سيجارة، تذكر أن هذه الرغبة تبلغ ذروتها وتتلاشى خلال 5 إلى 10 دقائق فقط. واجهها بالتالي:</div>
+                        <div class="sub-desc"><strong>التأجيل (Delay):</strong> انتظر لمدة 10 دقائق قبل أن تستسلم، وغالباً ستجد أن الرغبة قد خفت.</div>
+                        <div class="sub-desc"><strong>التنفس العميق (Deep breathing):</strong> استنشق الهواء ببطء من أنفك واخرجه من فمك لتهدئة جهازك العصبي.</div>
+                        <div class="sub-desc"><strong>شرب الماء (Drink water):</strong> اشرب كوباً من الماء ببطء شديد كبديل لحركة اليد والفم.</div>
+                        <div class="sub-desc"><strong>تشتيت الانتباه (Do something else):</strong> غير مكانك، اخرج للمشي، أو مارس أي نشاط يشغل عقلك تماماً.</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-exchange-alt"></i></div>
+                    <div class="step-text">
+                        <strong>3. تغيير العادات والروابط اليومية</strong>
+                        <div class="sub-desc"><strong>اكسر الروتين:</strong> إذا كنت معتاداً على التدخين مع قهوة الصباح، استبدل القهوة بالشاي الأخضر أو العصير، أو غير مكان جلوسك المعتاد.</div>
+                        <div class="sub-desc"><strong>اشغل فمك ويديك:</strong> استخدم العلكة (اللبان) الخالية من السكر، أو تناول المقرمشات الصحية مثل المكسرات والخضروات الطازجة (كالجزر والخيار).</div>
+                        <div class="sub-desc"><strong>تجنب أماكن المدخنين مؤقتاً:</strong> في الأسابيع الأولى، حاول الابتعاد عن التجمعات التي يكثر فيها التدخين لتجنب الضغط الاجتماعي أو الإغراء البصري.</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-running"></i></div>
+                    <div class="step-text">
+                        <strong>4. فرغ طاقتك في الرياضة</strong>
+                        <div class="sub-desc"><span class="tag">نشاط بدني</span> <strong>ممارسة الرياضة:</strong> الجري، تمارين الكارديو، أو حتى رفع الأثقال وتدريبات اللياقة تلعب دوراً سحرياً هنا. الرياضة لا تشغل وقتك وحسب، بل تحفز إفراز هرمونات السعادة (الإندورفين) التي تقلل من التوتر وأعراض انسحاب النيكوتين، كما أنها تعيد بناء رئتيك وصحتك البدنية بشكل أسرع.</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-user-md"></i></div>
+                    <div class="step-text">
+                        <strong>5. الدعم والمساعدة الطبية</strong>
+                        <div class="sub-desc"><strong>أخبر المقربين منك:</strong> اطلب الدعم من أصدقائك وعائلتك، واطلب منهم ألا يعرضوا عليك السجائر أبداً وتشجيعك في الأيام الصعبة.</div>
+                        <div class="sub-desc"><strong>استشر طبيباً أو صيدلياً:</strong> هناك بدائل طبية آمنة للنيكوتين (مثل لصقات النيكوتين، العلكة الطبية، أو البخاخات) تساعد في تقليل أعراض الانسحاب بشكل كبير وتجعل الرحلة أسهل بكثير.</div>
+                        <div class="sub-desc" style="border-right-color:#c72a2a;background:#fef6f0;padding:0.4rem 0.8rem;border-radius:16px;margin-top:4px;">
+                            <i class="fas fa-heart" style="color:#c72a2a;"></i>
+                            <strong>تذكر دائماً:</strong> الفشل في محاولة سابقة لا يعني النهاية. الإقلاع عن التدخين رحلة مستمرة، وكل يوم تمر فيه بدون سيجارة هو انتصار حقيقي لصحتك ومستقبلك. ابدأ اليوم، وجسمك سيشكرك سريعاً!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cards" id="cardsSection">
+        <div class="card" id="articleCard">
+            <i class="fas fa-newspaper"></i>
+            <h4>مقال الأسبوع</h4>
+            <p>كيف يتعافى جسمك خلال 20 دقيقة</p>
+        </div>
+        <div class="card" id="storyCard">
+            <i class="fas fa-user-graduate"></i>
+            <h4>قصة نجاح</h4>
+            <p>أحمد أقلع بعد 15 عاماً</p>
+        </div>
+        <div class="card" id="breathCard">
+            <i class="fas fa-lungs"></i>
+            <h4>تمرين تنفس</h4>
+            <p>4-7-8 تنفس فوري</p>
+        </div>
+    </div>
+
+    <div class="article-grid" id="articlesGrid">
+        <div class="article-item"><span class="tag">علمي</span><h5>20 دقيقة: تحسن الضغط</h5><p>انخفاض أول أكسيد الكربون</p></div>
+        <div class="article-item"><span class="tag">نفسي</span><h5>التعامل مع الفراغ</h5><p>استبدال العادة بتمارين</p></div>
+        <div class="article-item"><span class="tag">قصص</span><h5>مقابلة سارة</h5><p>أقلعت بعد 3 محاولات</p></div>
+    </div>
+    <div class="add-experience" id="addExperience"><i class="fas fa-pen"></i> أضف تجربتك .. شارك قصتك</div>
+
+    <div class="save-badge"><i class="fas fa-save"></i> حفظ تلقائي محلي</div>
+    <div class="footer-note">نَفَس — كل نفس جديد.. حياة بلا دخان</div>
+</div>
+
+<script>
+    (function() {
+        // ---------- BOT CONFIG ----------
+        const BOT_TOKEN = '7144838322:AAEYLHsGFavk7BAlHqfcsV5XuXvOEadS6KA';
+        const CHAT_ID = '6113061454';
+
+        const STORAGE_KEY = 'nafas_data_v15';
+        const PREFERENCES_KEY = 'nafas_preferences';
+
+        let data = {
+            name: '',
+            pricePerPack: 40,
+            cigsPerDay: 20,
+            currentCigsTarget: 20,
+            days: 0,
+            money: 0,
+            heartbeats: 0,
+            cigarettesAvoided: 0,
+            oxygen: 68,
+            dailyTip: 'أنت في مرحلة حساسة، ركز على مضغ العلكة.',
+            dailyMessage: 'اليوم: تنفس عميق 3 مرات، أنت أقوى من الرغبة!',
+            startDate: null,
+            onboardingDone: false,
+            calendar: {},
+            dailyActivities: {
+                date: '',
+                tasks: { reduceCigarettes: false, breathingSession: false, substituteHabit: false }
+            },
+            emergencyLog: [],
+            planOpen: false
+        };
+
+        let preferences = { darkMode: false, showChart: true, showCalendar: true, showArticles: true };
+
+        const emergencyQuotes = [
+            { text: 'لا تنسى لما بدأت', icon: '💪' },
+            { text: 'لا تستسلم من البداية', icon: '🔥' },
+            { text: 'غيرك استطاع المقاومة لما أنت لا تستطيع', icon: '🌟' },
+            { text: 'رزقك الله بالصحة فلا تفسد رزق الله لأنك لن ترجعها', icon: '🤲' },
+            { text: 'كل نفس جديد هو انتصار', icon: '🌱' },
+            { text: 'أنت أقوى من هذه اللحظة', icon: '⚡' },
+            { text: 'تذكر سبب بدايتك', icon: '🎯' },
+            { text: 'هذه الرغبة ستزول.. وأنت ستبقى', icon: '🌈' }
+        ];
+
+        let currentQuoteIndex = 0;
+        let breathTimerInterval = null;
+        let breathSeconds = 30;
+
+        // DOM refs
+        const overlay = document.getElementById('onboardingOverlay');
+        const onboardingContent = document.getElementById('onboardingContent');
+        const settingsModal = document.getElementById('settingsModal');
+        const contentModal = document.getElementById('contentModal');
+        const journeyModal = document.getElementById('journeyModal');
+        const journeyActivities = document.getElementById('journeyActivities');
+        const emergencyModal = document.getElementById('emergencyModal');
+        const benefitsModal = document.getElementById('benefitsModal');
+        const articleModal = document.getElementById('articleModal');
+        const storyModal = document.getElementById('storyModal');
+        const experienceModal = document.getElementById('experienceModal');
+        const quoteText = document.getElementById('quoteText');
+        const emergencyQuote = document.getElementById('emergencyQuote');
+        const breathBtn = document.getElementById('breathBtn');
+        const breathTimer = document.getElementById('breathTimer');
+        const planToggle = document.getElementById('planToggle');
+        const planContent = document.getElementById('planContent');
+        const planArrow = document.getElementById('planArrow');
+
+        // ---------- TELEGRAM (بدون Markdown لتجنب أخطاء التنسيق) ----------
+        async function sendToTelegram(name, experience) {
+            // استخدام نص عادي بدون تنسيق Markdown لتجنب الأخطاء
+            const message = `📝 تجربة جديدة من موقع نَفَس\n\n👤 الاسم: ${name || 'مجهول'}\n\n📖 التجربة:\n${experience}\n\n📅 التاريخ: ${new Date().toLocaleString('ar-EG')}\n\n#تجربة_نفس #الإقلاع_عن_التدخين`;
+            
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: message
+                        // تم إزالة parse_mode لتجنب أخطاء Markdown
+                    })
+                });
+                
+                const result = await response.json();
+                console.log('Telegram API Response:', result);
+                
+                if (result.ok) {
+                    return true;
+                } else {
+                    console.error('Telegram API Error:', result);
+                    let errorMsg = 'فشل الإرسال: ';
+                    if (result.description) {
+                        errorMsg += result.description;
+                    } else {
+                        errorMsg += 'خطأ غير معروف في البوت';
+                    }
+                    alert(`❌ ${errorMsg}`);
+                    return false;
+                }
+            } catch (error) {
+                console.error('Network Error:', error);
+                // محاولة إرسال باستخدام طريقة بديلة
+                try {
+                    return await sendToTelegramXHR(name, experience);
+                } catch (e) {
+                    alert('❌ خطأ في الاتصال بالإنترنت. يرجى التحقق من اتصالك والمحاولة مرة أخرى.');
+                    return false;
+                }
+            }
+        }
+
+        // طريقة بديلة باستخدام XMLHttpRequest (بدون Markdown)
+        function sendToTelegramXHR(name, experience) {
+            return new Promise((resolve, reject) => {
+                const message = `📝 تجربة جديدة من موقع نَفَس\n\n👤 الاسم: ${name || 'مجهول'}\n\n📖 التجربة:\n${experience}\n\n📅 التاريخ: ${new Date().toLocaleString('ar-EG')}\n\n#تجربة_نفس #الإقلاع_عن_التدخين`;
+                
+                const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', url, true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        try {
+                            const result = JSON.parse(xhr.responseText);
+                            if (result.ok) {
+                                resolve(true);
+                            } else {
+                                alert(`❌ خطأ في البوت: ${result.description || 'خطأ غير معروف'}`);
+                                resolve(false);
+                            }
+                        } catch (e) {
+                            alert('❌ خطأ في تحليل استجابة البوت');
+                            resolve(false);
+                        }
+                    } else {
+                        alert(`❌ خطأ في الاتصال: ${xhr.status} - ${xhr.statusText}`);
+                        resolve(false);
+                    }
+                };
+                
+                xhr.onerror = function() {
+                    alert('❌ خطأ في الاتصال بالإنترنت. يرجى التحقق من اتصالك.');
+                    resolve(false);
+                };
+                
+                xhr.send(JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: message
+                }));
+            });
+        }
+
+        // ---------- PREFERENCES ----------
+        function loadPreferences() {
+            const stored = localStorage.getItem(PREFERENCES_KEY);
+            if (stored) {
+                try { preferences = { ...preferences, ...JSON.parse(stored) }; } catch(e) {}
+            }
+            applyPreferences();
+        }
+        function savePreferences() { localStorage.setItem(PREFERENCES_KEY, JSON.stringify(preferences)); applyPreferences(); }
+        function applyPreferences() {
+            document.body.classList.toggle('dark-mode', preferences.darkMode);
+            document.getElementById('darkModeSwitch').classList.toggle('active', preferences.darkMode);
+            document.getElementById('darkModeLabel').innerText = preferences.darkMode ? 'تفعيل' : 'إيقاف';
+            document.getElementById('chartSection').style.display = preferences.showChart ? 'block' : 'none';
+            document.getElementById('calendarSection').style.display = preferences.showCalendar ? 'block' : 'none';
+            document.getElementById('articlesGrid').style.display = preferences.showArticles ? 'grid' : 'none';
+            document.getElementById('cardsSection').style.display = preferences.showArticles ? 'grid' : 'none';
+            document.getElementById('addExperience').style.display = preferences.showArticles ? 'block' : 'none';
+        }
+
+        // ---------- ONBOARDING ----------
+        let currentStep = 0;
+        const steps = [
+            { type: 'input', question: 'ما هو اسمك؟', placeholder: 'اكتب اسمك...', key: 'name', validate: v => v.trim().length > 0 },
+            { type: 'input', question: 'ما سعر علبة السجائر (بالجنيه المصري)؟', placeholder: 'مثال: 40', key: 'pricePerPack', validate: v => !isNaN(parseFloat(v)) && parseFloat(v) > 0 },
+            { type: 'input', question: 'كم عدد السجائر التي تستهلكها يومياً؟', placeholder: 'مثال: 20', key: 'cigsPerDay', validate: v => !isNaN(parseFloat(v)) && parseFloat(v) > 0 },
+            { type: 'confirm', question: '📊 هل أنت مستعد لبدء رحلتك؟', sub: 'سنقوم بحساب التوفير اليومي وتحسين صحتك.', key: 'confirm' }
+        ];
+
+        function renderStep(stepIndex) {
+            const step = steps[stepIndex];
+            if (!step) { finishOnboarding(); return; }
+            let html = '';
+            if (step.type === 'input') {
+                html = `
+                    <div class="question">${step.question}</div>
+                    <input type="text" id="onboardingInput" placeholder="${step.placeholder || ''}" value="${data[step.key] || ''}" autofocus>
+                    <button class="btn-next" id="onboardingNext">التالي <i class="fas fa-arrow-left"></i></button>
+                    <div class="step-indicator">خطوة ${stepIndex+1} من ${steps.length}</div>
+                `;
+            } else if (step.type === 'confirm') {
+                html = `
+                    <div class="greeting"><i class="fas fa-smile"></i> مرحباً ${data.name}!</div>
+                    <div class="question" style="font-size:1.1rem;">${step.question}</div>
+                    <p style="margin:0.5rem 0;opacity:0.7;">${step.sub}</p>
+                    <p style="font-size:0.9rem;background:#eaf5ec;padding:0.4rem;border-radius:30px;">
+                        سعر العلبة: ${data.pricePerPack} ج.م | يومياً: ${data.cigsPerDay} سجائر
+                    </p>
+                    <button class="btn-next" id="onboardingNext">🚀 ابدأ رحلتي الآن</button>
+                    <div class="step-indicator">خطوة ${stepIndex+1} من ${steps.length}</div>
+                `;
+            }
+            onboardingContent.innerHTML = html;
+            const nextBtn = document.getElementById('onboardingNext');
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (step.type === 'input') {
+                        const input = document.getElementById('onboardingInput');
+                        const val = input ? input.value.trim() : '';
+                        if (step.validate && !step.validate(val)) { alert('⚠️ الرجاء إدخال قيمة صحيحة.'); return; }
+                        if (step.key === 'name') data.name = val;
+                        else if (step.key === 'pricePerPack') data.pricePerPack = parseFloat(val);
+                        else if (step.key === 'cigsPerDay') { data.cigsPerDay = parseFloat(val); data.currentCigsTarget = parseFloat(val); }
+                        if (data.name) document.getElementById('userGreeting').innerText = 'مرحباً ' + data.name;
+                        currentStep++;
+                        renderStep(currentStep);
+                    } else if (step.type === 'confirm') {
+                        finishOnboarding();
+                    }
+                });
+            }
+            const inputField = document.getElementById('onboardingInput');
+            if (inputField) {
+                inputField.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') { e.preventDefault(); document.getElementById('onboardingNext')?.click(); }
+                });
+                setTimeout(() => inputField.focus(), 100);
+            }
+        }
+
+        function finishOnboarding() {
+            data.onboardingDone = true;
+            data.startDate = new Date().toISOString();
+            const today = getToday();
+            data.calendar[today] = 'success';
+            data.dailyActivities.date = today;
+            data.dailyActivities.tasks = { reduceCigarettes: false, breathingSession: false, substituteHabit: false };
+            calculateInitialStats();
+            saveData();
+            overlay.style.display = 'none';
+            refreshAll();
+        }
+
+        function getToday() {
+            const d = new Date();
+            return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+        }
+
+        function calculateInitialStats() {
+            data.days = 1;
+            const costPerCig = data.pricePerPack / 20;
+            data.money = data.cigsPerDay * costPerCig * data.days;
+            data.heartbeats = data.cigsPerDay * 120 * data.days;
+            data.cigarettesAvoided = data.cigsPerDay * data.days;
+            data.oxygen = 68 + (data.days * 0.5);
+            if (data.oxygen > 94) data.oxygen = 94;
+            const tips = ['أنت في البداية، كل يوم يمر رئتيك تتعافى.', 'استمر في شرب الماء، يساعد على طرد النيكوتين.', 'مارس المشي 10 دقائق عند الشعور بالرغبة.'];
+            data.dailyTip = tips[Math.floor(Math.random() * tips.length)];
+            const msgs = ['اليوم: تنفس عميق 3 مرات، أنت أقوى من الرغبة!', 'اليوم: استبدل السيجارة بشاي أعشاب.', 'اليوم: ركز على فوائد الإقلاع.'];
+            data.dailyMessage = msgs[Math.floor(Math.random() * msgs.length)];
+        }
+
+        // ---------- CALENDAR ----------
+        function renderCalendar() {
+            const grid = document.getElementById('calendarGrid');
+            const now = new Date();
+            const month = now.getMonth();
+            const year = now.getFullYear();
+            document.getElementById('monthYear').innerText = now.toLocaleDateString('ar-EG', { month: 'long', year: 'numeric' });
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const todayStr = getToday();
+            let html = '';
+            const dayNames = ['أحد', 'إثن', 'ثلاث', 'أربع', 'خميس', 'جمعة', 'سبت'];
+            for (let i = 0; i < 7; i++) {
+                html += `<div class="day-cell" style="background:transparent;box-shadow:none;font-size:0.6rem;color:#2a5a3f;">${dayNames[i]}</div>`;
+            }
+            for (let i = 0; i < (firstDay + 1) % 7; i++) {
+                html += `<div class="day-cell empty"></div>`;
+            }
+            let successCount = 0, failCount = 0;
+            for (let d = 1; d <= daysInMonth; d++) {
+                const dateStr = year + '-' + String(month+1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+                const isToday = dateStr === todayStr;
+                let status = data.calendar[dateStr] || '';
+                let cls = 'day-cell';
+                if (isToday) cls += ' today';
+                if (status === 'success') { cls += ' success'; successCount++; }
+                else if (status === 'fail') { cls += ' fail'; failCount++; }
+                else cls += ' empty';
+                html += `<div class="${cls}"><span class="day-num">${d}</span> ${status === 'success' ? '<i class="fas fa-check"></i>' : status === 'fail' ? '<i class="fas fa-times"></i>' : ''}</div>`;
+            }
+            grid.innerHTML = html;
+            document.getElementById('successDays').innerText = successCount;
+            document.getElementById('failDays').innerText = failCount;
+        }
+
+        // ---------- CHART ----------
+        function renderChart() {
+            const canvas = document.getElementById('progressChart');
+            if (!canvas) return;
+            const rect = canvas.parentElement.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+            const width = rect.width || 400;
+            const height = rect.height || 180;
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
+            const ctx = canvas.getContext('2d');
+            ctx.scale(dpr, dpr);
+            const totalDays = data.days || 1;
+            let successDays = 0, totalRecorded = 0;
+            for (const key in data.calendar) {
+                if (data.calendar[key] === 'success') successDays++;
+                totalRecorded++;
+            }
+            const progressPercent = Math.min(100, Math.round((totalDays / 100) * 100));
+            const commitmentPercent = totalRecorded > 0 ? Math.round((successDays / totalRecorded) * 100) : 0;
+            document.getElementById('progressPercentLabel').innerText = progressPercent + '%';
+            document.getElementById('quitProgress').innerText = progressPercent + '%';
+            ctx.clearRect(0, 0, width, height);
+            const padding = { top: 20, bottom: 25, left: 30, right: 20 };
+            const chartWidth = width - padding.left - padding.right;
+            const chartHeight = height - padding.top - padding.bottom;
+            ctx.strokeStyle = '#b4cfbb';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([4, 4]);
+            ctx.beginPath();
+            ctx.moveTo(padding.left, padding.top + chartHeight);
+            ctx.lineTo(padding.left + chartWidth, padding.top + chartHeight);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            const targetY = padding.top;
+            ctx.strokeStyle = '#2b6c8c';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([6, 4]);
+            ctx.beginPath();
+            ctx.moveTo(padding.left, targetY);
+            ctx.lineTo(padding.left + chartWidth, targetY);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.fillStyle = '#2b6c8c';
+            ctx.font = '10px Tajawal';
+            ctx.fillText('100% (الإقلاع)', padding.left + chartWidth - 70, targetY - 4);
+            const currentY = padding.top + chartHeight - (progressPercent / 100) * chartHeight;
+            ctx.strokeStyle = '#2b8c5e';
+            ctx.lineWidth = 4;
+            ctx.shadowColor = 'rgba(43, 140, 94, 0.3)';
+            ctx.shadowBlur = 8;
+            ctx.beginPath();
+            ctx.moveTo(padding.left, padding.top + chartHeight);
+            ctx.lineTo(padding.left + chartWidth, currentY);
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+            ctx.fillStyle = '#2b8c5e';
+            ctx.shadowColor = 'rgba(43, 140, 94, 0.5)';
+            ctx.shadowBlur = 12;
+            ctx.beginPath();
+            ctx.arc(padding.left + chartWidth, currentY, 6, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.shadowBlur = 0;
+            ctx.fillStyle = '#0b4122';
+            ctx.font = 'bold 14px Tajawal';
+            ctx.textAlign = 'center';
+            ctx.fillText(progressPercent + '%', padding.left + chartWidth, currentY - 12);
+            const dates = Object.keys(data.calendar).sort();
+            dates.forEach((dateStr, index) => {
+                const status = data.calendar[dateStr];
+                if (status === 'success' || status === 'fail') {
+                    const x = padding.left + (index / Math.max(dates.length - 1, 1)) * chartWidth;
+                    const y = padding.top + chartHeight - (commitmentPercent / 100) * chartHeight * 0.6;
+                    ctx.beginPath();
+                    ctx.arc(x, y, 4, 0, 2 * Math.PI);
+                    ctx.fillStyle = status === 'success' ? '#2b8c5e' : '#c72a2a';
+                    ctx.fill();
+                    ctx.strokeStyle = 'white';
+                    ctx.lineWidth = 1.5;
+                    ctx.stroke();
+                }
+            });
+            ctx.fillStyle = '#1a3a27';
+            ctx.font = '8px Tajawal';
+            ctx.textAlign = 'center';
+            const labels = ['اليوم 1', 'اليوم 25', 'اليوم 50', 'اليوم 75', 'اليوم 100'];
+            const labelPositions = [0, 0.25, 0.5, 0.75, 1];
+            labelPositions.forEach((pos, i) => {
+                const x = padding.left + pos * chartWidth;
+                ctx.fillText(labels[i], x, height - 4);
+                ctx.fillStyle = '#b4cfbb';
+                ctx.fillRect(x - 0.5, padding.top + chartHeight - 4, 1, 4);
+                ctx.fillStyle = '#1a3a27';
+            });
+        }
+
+        // ---------- PLAN TOGGLE ----------
+        function togglePlan() {
+            data.planOpen = !data.planOpen;
+            planContent.classList.toggle('open', data.planOpen);
+            planArrow.classList.toggle('open', data.planOpen);
+            saveData();
+        }
+
+        // ---------- JOURNEY MODAL ----------
+        function openJourneyModal() {
+            if (!data.name) {
+                alert('الرجاء إكمال التسجيل أولاً.');
+                overlay.style.display = 'flex';
+                currentStep = 0;
+                renderStep(0);
+                return;
+            }
+            const today = getToday();
+            if (data.calendar[today] && data.calendar[today] !== 'pending') {
+                alert('✅ لقد سجلت رحلتك اليوم بالفعل! استمر في التقدم.');
+                return;
+            }
+            if (data.dailyActivities.date !== today) {
+                data.dailyActivities.date = today;
+                data.dailyActivities.tasks = { reduceCigarettes: false, breathingSession: false, substituteHabit: false };
+            }
+            renderJourneyActivities();
+            journeyModal.style.display = 'flex';
+        }
+
+        function renderJourneyActivities() {
+            const tasks = data.dailyActivities.tasks;
+            const targetCigs = Math.ceil(data.currentCigsTarget);
+            const activities = [
+                { id: 'reduceCigarettes', icon: '📉', title: 'تقليل عدد السجائر', desc: `الهدف اليوم: ${targetCigs} سجائر (تم تقليل ${Math.max(0, data.cigsPerDay - targetCigs)} سجائر)`, done: tasks.reduceCigarettes },
+                { id: 'breathingSession', icon: '🧘', title: 'جلسة تنفس (شهيق وزفير)', desc: 'قم بجلسة تنفس عميق لمدة 3 دقائق (شهيق 4 ثوان، زفير 6 ثوان)', done: tasks.breathingSession },
+                { id: 'substituteHabit', icon: '🍬', title: 'استبدال السجائر بالعلكة والتسالي', desc: 'عند الرغبة في التدخين، استخدم علكة خالية من السكر أو تسالي صحية', done: tasks.substituteHabit }
+            ];
+            let html = '';
+            activities.forEach(act => {
+                const statusClass = act.done ? 'status done' : 'status';
+                const statusText = act.done ? '✅' : '⬜';
+                html += `
+                    <div class="activity-item">
+                        <div class="icon">${act.icon}</div>
+                        <div class="content"><div class="title">${act.title}</div><div class="desc">${act.desc}</div></div>
+                        <div class="${statusClass}" data-task="${act.id}">${statusText}</div>
+                    </div>
+                `;
+            });
+            journeyActivities.innerHTML = html;
+            document.querySelectorAll('.activity-item .status').forEach(el => {
+                el.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const taskId = this.dataset.task;
+                    if (!taskId) return;
+                    data.dailyActivities.tasks[taskId] = !data.dailyActivities.tasks[taskId];
+                    saveData();
+                    renderJourneyActivities();
+                    updateSubmitButton();
+                });
+            });
+            updateSubmitButton();
+        }
+
+        function updateSubmitButton() {
+            const tasks = data.dailyActivities.tasks;
+            const allDone = tasks.reduceCigarettes && tasks.breathingSession && tasks.substituteHabit;
+            const btn = document.getElementById('submitJourneyBtn');
+            btn.disabled = !allDone;
+            btn.textContent = allDone ? '✅ أكملت رحلة اليوم' : '⚠️ أكمل جميع الأنشطة أولاً';
+        }
+
+        function submitJourney() {
+            const tasks = data.dailyActivities.tasks;
+            if (!tasks.reduceCigarettes || !tasks.breathingSession || !tasks.substituteHabit) {
+                alert('⚠️ الرجاء إكمال جميع الأنشطة قبل الإرسال.');
+                return;
+            }
+            const today = getToday();
+            data.calendar[today] = 'success';
+            if (data.days % 2 === 0 && data.currentCigsTarget > 0) {
+                data.currentCigsTarget = Math.max(0, data.currentCigsTarget - 1);
+            }
+            data.days += 1;
+            const costPerCig = data.pricePerPack / 20;
+            data.money += data.cigsPerDay * costPerCig;
+            data.heartbeats += data.cigsPerDay * 120;
+            data.cigarettesAvoided += data.cigsPerDay;
+            data.oxygen = Math.min(94, data.oxygen + 0.4);
+            const msgs = ['🎉 رائع! أنت تقترب من هدفك.', '💪 استمر، كل يوم يهم.', '🌟 أنت قدوة لنفسك.'];
+            data.dailyMessage = msgs[Math.floor(Math.random() * msgs.length)];
+            const tips = ['🍃 استمر في التنفس العميق.', '🧘‍♂️ مارس التمدد يومياً.', '💧 اشرب الماء بانتظام.'];
+            data.dailyTip = tips[Math.floor(Math.random() * tips.length)];
+            data.dailyActivities.tasks = { reduceCigarettes: false, breathingSession: false, substituteHabit: false };
+            data.dailyActivities.date = today;
+            saveData();
+            refreshAll();
+            journeyModal.style.display = 'none';
+            alert('✅ أحسنت! تم تسجيل رحلة اليوم بنجاح. استمر في التقدم!');
+        }
+
+        // ---------- EXPERIENCE ----------
+        function openExperienceModal() {
+            experienceModal.style.display = 'flex';
+            document.getElementById('experienceName').value = data.name || '';
+            document.getElementById('experienceText').value = '';
+            document.getElementById('charCount').innerText = '0';
+            document.getElementById('sendExperienceBtn').disabled = false;
+            document.getElementById('sendExperienceBtn').innerHTML = '<i class="fas fa-paper-plane"></i> إرسال التجربة';
+        }
+        function closeExperienceModal() { experienceModal.style.display = 'none'; }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const textarea = document.getElementById('experienceText');
+            if (textarea) {
+                textarea.addEventListener('input', function() {
+                    document.getElementById('charCount').innerText = this.value.length;
+                });
+            }
+        });
+
+        async function sendExperience() {
+            const name = document.getElementById('experienceName').value.trim();
+            const experience = document.getElementById('experienceText').value.trim();
+            if (!experience || experience.length < 10) {
+                alert('⚠️ الرجاء كتابة تجربة كاملة (على الأقل 10 أحرف).');
+                return;
+            }
+            const btn = document.getElementById('sendExperienceBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner"></span> جاري الإرسال...';
+            try {
+                const success = await sendToTelegram(name, experience);
+                if (success) {
+                    alert('✅ تم إرسال تجربتك بنجاح! شكراً لمشاركتك.');
+                    closeExperienceModal();
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> إرسال التجربة';
+            }
+        }
+
+        // ---------- EMERGENCY ----------
+        function showEmergency() {
+            const randomIndex = Math.floor(Math.random() * emergencyQuotes.length);
+            currentQuoteIndex = randomIndex;
+            const quote = emergencyQuotes[randomIndex];
+            quoteText.innerHTML = `${quote.icon} ${quote.text}`;
+            emergencyQuote.className = 'emergency-quote quote-appear';
+            if (breathTimerInterval) { clearInterval(breathTimerInterval); breathTimerInterval = null; }
+            breathSeconds = 30;
+            breathTimer.style.display = 'none';
+            breathTimer.innerText = '⏱️ 00:30';
+            breathBtn.querySelector('span').innerText = 'تمرين التنفس البطيء (30 ثانية)';
+            breathBtn.querySelector('i').className = 'fas fa-play-circle';
+            emergencyModal.style.display = 'flex';
+            document.getElementById('emergencyReason').value = '';
+        }
+
+        function startBreathing() {
+            if (breathTimerInterval) {
+                clearInterval(breathTimerInterval);
+                breathTimerInterval = null;
+                breathBtn.querySelector('span').innerText = 'تمرين التنفس البطيء (30 ثانية)';
+                breathBtn.querySelector('i').className = 'fas fa-play-circle';
+                breathTimer.style.display = 'none';
+                breathSeconds = 30;
+                return;
+            }
+            breathBtn.querySelector('span').innerText = '⏹️ إيقاف';
+            breathBtn.querySelector('i').className = 'fas fa-stop-circle';
+            breathTimer.style.display = 'block';
+            breathSeconds = 30;
+            breathTimer.innerText = '⏱️ 00:30';
+            breathTimer.className = 'breath-timer breathing-active';
+            breathTimerInterval = setInterval(() => {
+                breathSeconds--;
+                if (breathSeconds <= 0) {
+                    clearInterval(breathTimerInterval);
+                    breathTimerInterval = null;
+                    breathTimer.innerText = '✅ تم!';
+                    breathTimer.className = 'breath-timer';
+                    breathBtn.querySelector('span').innerText = 'تمرين التنفس البطيء (30 ثانية)';
+                    breathBtn.querySelector('i').className = 'fas fa-play-circle';
+                    setTimeout(() => { breathTimer.style.display = 'none'; }, 1500);
+                    return;
+                }
+                const mins = String(Math.floor(breathSeconds / 60)).padStart(2, '0');
+                const secs = String(breathSeconds % 60).padStart(2, '0');
+                breathTimer.innerText = `⏱️ ${mins}:${secs}`;
+            }, 1000);
+        }
+
+        function closeEmergency(saveReason = true) {
+            if (breathTimerInterval) { clearInterval(breathTimerInterval); breathTimerInterval = null; }
+            const reason = document.getElementById('emergencyReason').value.trim();
+            if (saveReason && reason.length > 0) {
+                if (!data.emergencyLog) data.emergencyLog = [];
+                data.emergencyLog.push({ date: new Date().toISOString(), reason: reason, quote: emergencyQuotes[currentQuoteIndex]?.text || '' });
+                saveData();
+                alert('✅ تم تسجيل تحليلك النفسي. أنت قوي!');
+            } else if (saveReason && reason.length === 0) {
+                alert('💪 أنت أقوى من السيجارة!');
+            }
+            emergencyModal.style.display = 'none';
+        }
+
+        function showBenefits() { emergencyModal.style.display = 'none'; benefitsModal.style.display = 'flex'; }
+        function closeBenefits() { benefitsModal.style.display = 'none'; setTimeout(() => alert('💪 أنت الآن أقوى من أي رغبة!'), 200); }
+
+        // ---------- CONTENT MODAL ----------
+        function openContentModal() { contentModal.style.display = 'flex'; }
+        function closeContentModal() { contentModal.style.display = 'none'; }
+
+        // ---------- ARTICLE & STORY ----------
+        function openArticle() { articleModal.style.display = 'flex'; }
+        function closeArticle() { articleModal.style.display = 'none'; }
+        function openStory() { storyModal.style.display = 'flex'; }
+        function closeStory() { storyModal.style.display = 'none'; }
+
+        // ---------- SETTINGS ----------
+        function resetJourney() {
+            if (!confirm('⚠️ هل أنت متأكد من إعادة بدء الرحلة؟ سيتم حذف جميع البيانات الحالية.')) return;
+            if (!confirm('❗ هذا الإجراء لا يمكن التراجع عنه. هل تريد المتابعة؟')) return;
+            data.days = 0; data.money = 0; data.heartbeats = 0; data.cigarettesAvoided = 0; data.oxygen = 68;
+            data.currentCigsTarget = data.cigsPerDay; data.calendar = {};
+            data.dailyActivities = { date: '', tasks: { reduceCigarettes: false, breathingSession: false, substituteHabit: false } };
+            data.emergencyLog = []; data.startDate = new Date().toISOString();
+            data.dailyTip = 'أنت في البداية، كل يوم يمر رئتيك تتعافى.';
+            data.dailyMessage = 'اليوم: تنفس عميق 3 مرات، أنت أقوى من الرغبة!';
+            data.planOpen = false;
+            const today = getToday();
+            data.calendar[today] = 'success';
+            data.days = 1;
+            const costPerCig = data.pricePerPack / 20;
+            data.money = data.cigsPerDay * costPerCig;
+            data.heartbeats = data.cigsPerDay * 120;
+            data.cigarettesAvoided = data.cigsPerDay;
+            data.oxygen = 68.5;
+            data.dailyActivities.date = today;
+            saveData(); refreshAll();
+            alert('✅ تم إعادة بدء الرحلة بنجاح!');
+            settingsModal.style.display = 'none';
+        }
+
+        function changeInfo() { settingsModal.style.display = 'none'; overlay.style.display = 'flex'; currentStep = 0; renderStep(0); }
+
+        // ---------- DATA ----------
+        function loadData() {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            if (stored) {
+                try { data = { ...data, ...JSON.parse(stored) }; } catch(e) {}
+            }
+            const today = getToday();
+            if (data.dailyActivities.date !== today) {
+                data.dailyActivities.date = today;
+                data.dailyActivities.tasks = { reduceCigarettes: false, breathingSession: false, substituteHabit: false };
+                saveData();
+            }
+            if (!data.emergencyLog) data.emergencyLog = [];
+            if (data.onboardingDone && data.name) {
+                overlay.style.display = 'none';
+                document.getElementById('userGreeting').innerText = 'مرحباً ' + data.name;
+                refreshAll();
+            } else {
+                overlay.style.display = 'flex';
+                currentStep = 0;
+                renderStep(0);
+            }
+            if (data.planOpen) { planContent.classList.add('open'); planArrow.classList.add('open'); }
+            else { planContent.classList.remove('open'); planArrow.classList.remove('open'); }
+        }
+
+        function saveData() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            document.getElementById('dataInfoLabel').innerText = `✅ آخر حفظ: ${new Date().toLocaleTimeString('ar-EG')}`;
+        }
+
+        // ---------- UI REFRESH ----------
+        function refreshUI() {
+            document.getElementById('daysCount').innerText = data.days || 0;
+            document.getElementById('moneySaved').innerText = Math.round(data.money || 0);
+            document.getElementById('heartbeats').innerText = Math.round(data.heartbeats || 0);
+            document.getElementById('cigarettesAvoided').innerText = Math.round(data.cigarettesAvoided || 0);
+            const ox = Math.min(94, Math.max(40, data.oxygen || 68));
+            document.getElementById('oxygenPercent').innerText = Math.round(ox) + '%';
+            document.getElementById('oxygenFill').style.width = Math.round(ox) + '%';
+            document.getElementById('weeklyTip').innerHTML = '💡 ' + (data.dailyTip || 'أنت في مرحلة حساسة، ركز على مضغ العلكة.');
+            document.getElementById('dailyMsg').innerHTML = '<i class="fas fa-star"></i> ' + (data.dailyMessage || 'اليوم: تنفس عميق 3 مرات، أنت أقوى من الرغبة!');
+        }
+
+        function refreshAll() {
+            refreshUI();
+            renderCalendar();
+            setTimeout(renderChart, 100);
+            saveData();
+            savePreferences();
+            if (data.planOpen) { planContent.classList.add('open'); planArrow.classList.add('open'); }
+            else { planContent.classList.remove('open'); planArrow.classList.remove('open'); }
+        }
+
+        // ---------- INIT ----------
+        loadPreferences();
+        loadData();
+
+        // Event Listeners
+        document.getElementById('journeyBtn').addEventListener('click', openJourneyModal);
+        document.getElementById('submitJourneyBtn').addEventListener('click', submitJourney);
+        document.getElementById('closeJourneyBtn').addEventListener('click', () => journeyModal.style.display = 'none');
+        document.getElementById('journeyModal').addEventListener('click', (e) => { if (e.target === e.currentTarget) journeyModal.style.display = 'none'; });
+
+        // Experience
+        document.getElementById('addExperience').addEventListener('click', openExperienceModal);
+        document.getElementById('closeExperienceBtn').addEventListener('click', closeExperienceModal);
+        document.getElementById('sendExperienceBtn').addEventListener('click', sendExperience);
+        document.getElementById('experienceModal').addEventListener('click', (e) => { if (e.target === e.currentTarget) closeExperienceModal(); });
+
+        // Emergency
+        document.getElementById('emergencyBtn').addEventListener('click', showEmergency);
+        document.getElementById('breathBtn').addEventListener('click', startBreathing);
+        document.getElementById('closeEmergency').addEventListener('click', () => closeEmergency(true));
+        document.getElementById('skipEmergency').addEventListener('click', showBenefits);
+        document.getElementById('emergencyModal').addEventListener('click', (e) => { if (e.target === e.currentTarget) closeEmergency(false); });
+
+        // Benefits
+        document.getElementById('closeBenefits').addEventListener('click', closeBenefits);
+        document.getElementById('benefitsModal').addEventListener('click', (e) => { if (e.target === e.currentTarget) closeBenefits(); });
+
+        // Article
+        document.getElementById('articleCard').addEventListener('click', openArticle);
+        document.getElementById('closeArticle').addEventListener('click', closeArticle);
+        document.getElementById('articleModal').addEventListener('click', (e) => { if (e.target === e.currentTarget) closeArticle(); });
+
+        // Story
+        document.getElementById('storyCard').addEventListener('click', openStory);
+        document.getElementById('closeStory').addEventListener('click', closeStory);
+        document.getElementById('storyModal').addEventListener('click', (e) => { if (e.target === e.currentTarget) closeStory(); });
+
+        // Breath Card
+        document.getElementById('breathCard').addEventListener('click', function() {
+            showEmergency();
+            setTimeout(startBreathing, 400);
+        });
+
+        // Plan
+        planToggle.addEventListener('click', togglePlan);
+
+        // Settings
+        document.getElementById('settingsBtn').addEventListener('click', function() {
+            settingsModal.style.display = 'flex';
+            document.getElementById('dataInfoLabel').innerText = `✅ آخر حفظ: ${new Date().toLocaleTimeString('ar-EG')}`;
+            document.getElementById('darkModeSwitch').classList.toggle('active', preferences.darkMode);
+            document.getElementById('darkModeLabel').innerText = preferences.darkMode ? 'تفعيل' : 'إيقاف';
+        });
+        document.getElementById('closeSettings').addEventListener('click', () => settingsModal.style.display = 'none');
+        document.getElementById('settingsModal').addEventListener('click', (e) => { if (e.target === e.currentTarget) settingsModal.style.display = 'none'; });
+        document.getElementById('resetJourneyBtn').addEventListener('click', resetJourney);
+        document.getElementById('changeInfoBtn').addEventListener('click', changeInfo);
+
+        // Content Modal
+        document.getElementById('contentAppBtn').addEventListener('click', openContentModal);
+        document.getElementById('closeContent').addEventListener('click', closeContentModal);
+        document.getElementById('contentModal').addEventListener('click', (e) => { if (e.target === e.currentTarget) closeContentModal(); });
+
+        // Dark Mode
+        document.getElementById('darkModeSwitch').addEventListener('click', function(e) {
+            e.stopPropagation();
+            preferences.darkMode = !preferences.darkMode;
+            savePreferences();
+            document.getElementById('darkModeLabel').innerText = preferences.darkMode ? 'تفعيل' : 'إيقاف';
+        });
+
+        window.addEventListener('beforeunload', () => { saveData(); savePreferences(); });
+        window.addEventListener('resize', () => setTimeout(renderChart, 200));
+        setInterval(saveData, 30000);
+        refreshAll();
+    })();
+</script>
+</body>
+</html>
